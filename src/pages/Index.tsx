@@ -246,7 +246,6 @@ const Index = () => {
       <main>
         <Hero />
         <TopForm />
-        <Stats />
         <Projects />
         <Services />
         <Process />
