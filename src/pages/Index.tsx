@@ -3,7 +3,6 @@ import Process from "@/components/Process";
 import Testimonial from "@/components/Testimonial";
 import BigCta from "@/components/BigCta";
 import TopForm from "@/components/TopForm";
-import Stats from "@/components/Stats";
 import ContactForm from "@/components/ContactForm";
 
 const projects = [
