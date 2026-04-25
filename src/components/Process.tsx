@@ -1,9 +1,9 @@
 const steps = [
-  { n: "01", title: "Videohovor", desc: "15 minút. Zadarmo. Bez záväzkov." },
-  { n: "02", title: "MVP", desc: "Prvá funkčná verzia do 7 dní." },
-  { n: "03", title: "Kontrakt", desc: "Transparentné podmienky. Žiadne skryté poplatky." },
-  { n: "04", title: "Odovzdanie", desc: "Hotové riešenie, otestované, pripravené." },
-  { n: "05", title: "Support", desc: "Sme tu aj po dodaní. 24/7." },
+  { n: "01", title: "Zavoláme si", desc: "Spoznáme sa, pochopíme váš cieľ. 15 minút, zadarmo." },
+  { n: "02", title: "Navrhneme plán", desc: "Do 48h dostanete presný návrh s cenou a termínom." },
+  { n: "03", title: "Vytvoríme MVP", desc: "Prvá funkčná verzia do 7 dní. Vidíte výsledok skôr než zaplatíte." },
+  { n: "04", title: "Spustíme naživo", desc: "Otestované, pripravené, fungujúce." },
+  { n: "05", title: "Rastieme spolu", desc: "Podpora, optimalizácia, nové nápady. Sme váš tím." },
 ];
 
 const Process = () => (
@@ -12,10 +12,10 @@ const Process = () => (
       <div className="mb-16">
         <p className="reveal uppercase text-xs tracking-[0.2em] text-[hsl(0_0%_4%/0.6)] mb-6">Proces</p>
         <h2 className="reveal font-black uppercase tracking-[-0.02em] leading-[0.95]" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
-          5 krokov k výsledku
+          Jednoduchý proces, jasné výsledky
         </h2>
         <p className="reveal mt-4 text-base md:text-lg text-[hsl(0_0%_4%/0.6)]">
-          Bez zálohy. Platíte až keď to funguje.
+          Od prvého hovoru po hotové riešenie. Vždy transparentne.
         </p>
       </div>
 
