@@ -1,17 +1,22 @@
 const steps = [
-  { n: "01", title: "Videohovor", desc: "Spoznáme sa a prejdeme tvoju víziu." },
-  { n: "02", title: "MVP", desc: "Prvá funkčná verzia v krátkom čase." },
-  { n: "03", title: "Kontrakt", desc: "Jasné podmienky a transparentnosť." },
-  { n: "04", title: "Odovzdanie", desc: "Spustenie naživo a školenie." },
-  { n: "05", title: "Support 24/7", desc: "Som tu pre teba aj po launchi." },
+  { n: "01", title: "Videohovor", desc: "15 minút. Zadarmo. Bez záväzkov." },
+  { n: "02", title: "MVP", desc: "Prvá funkčná verzia do 7 dní." },
+  { n: "03", title: "Kontrakt", desc: "Transparentné podmienky. Žiadne skryté poplatky." },
+  { n: "04", title: "Odovzdanie", desc: "Hotové riešenie, otestované, pripravené." },
+  { n: "05", title: "Support", desc: "Sme tu aj po dodaní. 24/7." },
 ];
 
 const Process = () => (
   <section id="proces" className="px-6 md:px-10 py-32 md:py-48 bg-[hsl(0_0%_96%)] text-[hsl(0_0%_4%)]">
     <div className="max-w-[1200px] mx-auto">
-      <div className="flex items-end justify-between mb-16">
-        <p className="reveal uppercase text-xs tracking-[0.2em] text-[hsl(0_0%_4%/0.6)]">Proces</p>
-        <p className="reveal hidden md:block uppercase text-xs tracking-[0.2em] text-[hsl(0_0%_4%/0.4)]">5 krokov</p>
+      <div className="mb-16">
+        <p className="reveal uppercase text-xs tracking-[0.2em] text-[hsl(0_0%_4%/0.6)] mb-6">Proces</p>
+        <h2 className="reveal font-black uppercase tracking-[-0.02em] leading-[0.95]" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
+          5 krokov k výsledku
+        </h2>
+        <p className="reveal mt-4 text-base md:text-lg text-[hsl(0_0%_4%/0.6)]">
+          Bez zálohy. Platíte až keď to funguje.
+        </p>
       </div>
 
       {/* Cards row — horizontal scroll on mobile, equal flex on desktop */}
