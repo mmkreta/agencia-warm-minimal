@@ -137,7 +137,7 @@ const ProjectCard = ({ p }: { p: (typeof projects)[number] }) => (
 );
 
 const Projects = () => (
-  <section id="projekty" className="px-6 md:px-12 py-32 md:py-48 bg-[#0a0a0a] text-[hsl(0_0%_96%)]">
+  <section id="projekty" className="px-6 md:px-12 py-16 md:py-24 bg-[#0a0a0a] text-[hsl(0_0%_96%)]">
     <div className="max-w-[1400px] mx-auto">
       <div className="space-y-6 md:space-y-8">
         <ProjectCard p={projects[0]} />
