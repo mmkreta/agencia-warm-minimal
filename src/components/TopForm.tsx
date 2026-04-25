@@ -24,7 +24,12 @@ const TopForm = () => (
           }}
         />
       </div>
-      <ContactForm variant="dark-compact" buttonLabel="Dohodnúť stretnutie →" />
+      <ContactForm
+        variant="dark-compact"
+        buttonLabel="Dohodnúť stretnutie →"
+        includeMeeting
+        helperText="Vyberte si termín online stretnutia. Potvrdíme do 24 hodín."
+      />
     </div>
   </section>
 );

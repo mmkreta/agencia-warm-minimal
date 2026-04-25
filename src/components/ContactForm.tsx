@@ -1,4 +1,10 @@
 import { useState } from "react";
+import { format } from "date-fns";
+import { sk } from "date-fns/locale";
+import { CalendarIcon } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 
 type Variant = "warm" | "warm-compact" | "dark-compact";
 
@@ -7,6 +13,7 @@ interface ContactFormProps {
   buttonLabel?: string;
   helperText?: string;
   includeMessage?: boolean;
+  includeMeeting?: boolean;
 }
 
 const ContactForm = ({
@@ -14,8 +21,17 @@ const ContactForm = ({
   buttonLabel = "Dohodnúť stretnutie →",
   helperText = "Odpovieme do 24 hodín.",
   includeMessage = true,
+  includeMeeting = false,
 }: ContactFormProps) => {
-  const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    company: "",
+    phone: "",
+    email: "",
+    message: "",
+    time: "",
+  });
+  const [date, setDate] = useState<Date | undefined>(undefined);
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">("idle");
 
   const submit = async (e: React.FormEvent) => {
@@ -26,10 +42,13 @@ const ContactForm = ({
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, date: date ? date.toISOString() : "" }),
       });
       setStatus(res.ok ? "ok" : "err");
-      if (res.ok) setForm({ name: "", phone: "", email: "", message: "" });
+      if (res.ok) {
+        setForm({ name: "", company: "", phone: "", email: "", message: "", time: "" });
+        setDate(undefined);
+      }
     } catch {
       setStatus("err");
     }
@@ -68,6 +87,15 @@ const ContactForm = ({
           />
         </div>
         <div>
+          <label className={labelCls}>Názov firmy</label>
+          <input
+            maxLength={150}
+            value={form.company}
+            onChange={(e) => setForm({ ...form, company: e.target.value })}
+            className={inputCls}
+          />
+        </div>
+        <div>
           <label className={labelCls}>Telefón *</label>
           <input
             required
@@ -78,7 +106,7 @@ const ContactForm = ({
             className={inputCls}
           />
         </div>
-        <div className={compact ? "md:col-span-2" : ""}>
+        <div>
           <label className={labelCls}>Email</label>
           <input
             type="email"
@@ -88,6 +116,48 @@ const ContactForm = ({
             className={inputCls}
           />
         </div>
+        {includeMeeting && (
+          <>
+            <div>
+              <label className={labelCls}>Dátum stretnutia</label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <button
+                    type="button"
+                    className={cn(
+                      inputCls,
+                      "flex items-center justify-between text-left",
+                      !date && (isDark ? "text-white/30" : "text-[hsl(0_0%_4%/0.4)]")
+                    )}
+                  >
+                    {date ? format(date, "d. MMMM yyyy", { locale: sk }) : "Vyberte dátum"}
+                    <CalendarIcon className="h-4 w-4 opacity-60" />
+                  </button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0 pointer-events-auto" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={date}
+                    onSelect={setDate}
+                    disabled={(d) => d < new Date(new Date().setHours(0, 0, 0, 0))}
+                    initialFocus
+                    locale={sk}
+                    className={cn("p-3 pointer-events-auto")}
+                  />
+                </PopoverContent>
+              </Popover>
+            </div>
+            <div>
+              <label className={labelCls}>Čas stretnutia</label>
+              <input
+                type="time"
+                value={form.time}
+                onChange={(e) => setForm({ ...form, time: e.target.value })}
+                className={inputCls}
+              />
+            </div>
+          </>
+        )}
         {includeMessage && (
           <div className={compact ? "md:col-span-2" : ""}>
             <label className={labelCls}>Čo riešite?</label>
