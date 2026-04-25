@@ -140,13 +140,6 @@ const ProjectCard = ({ p }: { p: (typeof projects)[number] }) => (
 const Projects = () => (
   <section id="projekty" className="px-6 md:px-12 py-32 md:py-48">
     <div className="max-w-[1400px] mx-auto">
-      <p className="label-eyebrow reveal mb-6">Projekty</p>
-      <h2 className="reveal font-light leading-[1.1] tracking-[-0.02em]" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
-        Čo pre vás vieme vytvoriť
-      </h2>
-      <p className="reveal mt-4 text-foreground/60 max-w-[50ch] mb-16" style={{ fontSize: "clamp(1rem, 1.5vw, 1.25rem)" }}>
-        Každý projekt je iný. Každé riešenie je na mieru.
-      </p>
       <div className="space-y-6 md:space-y-8">
         <ProjectCard p={projects[0]} />
         <div className="grid md:grid-cols-2 gap-6 md:gap-8">
