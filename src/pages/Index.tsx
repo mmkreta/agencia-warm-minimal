@@ -283,7 +283,6 @@ const Index = () => {
   const ref = useRef<HTMLDivElement>(null);
   return (
     <div ref={ref} className="bg-background text-foreground min-h-screen">
-      <Nav />
       <main>
         <Hero />
         <Projects />
