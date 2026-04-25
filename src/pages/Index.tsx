@@ -138,7 +138,7 @@ const ProjectCard = ({ p }: { p: (typeof projects)[number] }) => (
 );
 
 const Projects = () => (
-  <section id="projekty" className="px-6 md:px-12 py-32 md:py-48">
+  <section id="projekty" className="px-6 md:px-12 py-32 md:py-48 bg-[#0a0a0a] text-[hsl(0_0%_96%)]">
     <div className="max-w-[1400px] mx-auto">
       <div className="space-y-6 md:space-y-8">
         <ProjectCard p={projects[0]} />
@@ -154,9 +154,9 @@ const Projects = () => (
 );
 
 const Services = () => (
-  <section id="sluzby" className="px-6 md:px-12 py-32 md:py-48 bg-secondary/40">
+  <section id="sluzby" className="px-6 md:px-12 py-32 md:py-48" style={{ backgroundColor: "#F5F5F0", color: "hsl(0 0% 4%)" }}>
     <div className="max-w-[1400px] mx-auto">
-      <p className="label-eyebrow reveal mb-6">Služby</p>
+      <p className="reveal uppercase text-[10px] tracking-[0.25em] text-[hsl(0_0%_4%/0.55)] mb-6">Služby</p>
       <h2 className="reveal font-light leading-[1.1] tracking-[-0.02em] mb-16" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
         Kompletné riešenia pod jednou strechou
       </h2>
@@ -164,12 +164,12 @@ const Services = () => (
         {services.map((s, i) => (
           <li
             key={s.title}
-            className="reveal group border-t border-border last:border-b py-8 md:py-10 flex flex-col md:flex-row md:items-baseline gap-3 md:gap-8 cursor-pointer transition-transform duration-[600ms] ease-out hover:translate-x-2"
+            className="reveal group border-t border-[hsl(0_0%_4%/0.12)] last:border-b py-8 md:py-10 flex flex-col md:flex-row md:items-baseline gap-3 md:gap-8 cursor-pointer transition-transform duration-[600ms] ease-out hover:translate-x-2"
           >
-            <span className="label-eyebrow w-12 shrink-0">{String(i + 1).padStart(2, "0")}</span>
+            <span className="uppercase text-[10px] tracking-[0.25em] text-[hsl(0_0%_4%/0.55)] w-12 shrink-0">{String(i + 1).padStart(2, "0")}</span>
             <div className="flex-1 flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 md:gap-8">
               <span className="font-normal" style={{ fontSize: "clamp(1.2rem, 2.5vw, 2rem)" }}>{s.title}</span>
-              <span className="text-sm md:text-base text-foreground/55 md:text-right md:max-w-[44ch]">{s.desc}</span>
+              <span className="text-sm md:text-base text-[hsl(0_0%_4%/0.55)] md:text-right md:max-w-[44ch]">{s.desc}</span>
             </div>
           </li>
         ))}
@@ -246,10 +246,10 @@ const Index = () => {
       <main>
         <Hero />
         <TopForm />
+        <Stats />
         <Projects />
         <Services />
         <Process />
-        <Stats />
         <Testimonial />
         <BigCta />
         <Contact />
