@@ -1,78 +1,45 @@
-import { Phone, Rocket, FileText, Package, Headphones } from "lucide-react";
-
 const steps = [
-  { n: "01", title: "Videohovor", desc: "Spoznáme sa", Icon: Phone, dark: true },
-  { n: "02", title: "MVP", desc: "Prvá funkčná verzia", Icon: Rocket, dark: true },
-  { n: "03", title: "Kontrakt", desc: "Jasné podmienky", Icon: FileText, dark: false },
-  { n: "04", title: "Odovzdanie", desc: "Spustenie naživo", Icon: Package, dark: false },
-  { n: "05", title: "Support 24/7", desc: "Som tu pre teba", Icon: Headphones, dark: false },
+  { n: "01", title: "Videohovor", desc: "Spoznáme sa a prejdeme tvoju víziu." },
+  { n: "02", title: "MVP", desc: "Prvá funkčná verzia v krátkom čase." },
+  { n: "03", title: "Kontrakt", desc: "Jasné podmienky a transparentnosť." },
+  { n: "04", title: "Odovzdanie", desc: "Spustenie naživo a školenie." },
+  { n: "05", title: "Support 24/7", desc: "Som tu pre teba aj po launchi." },
 ];
 
 const Process = () => (
   <section id="proces" className="px-6 md:px-12 py-32 md:py-48 bg-[hsl(0_0%_96%)] text-[hsl(0_0%_4%)]">
-    <div className="max-w-[1400px] mx-auto">
-      <p className="reveal uppercase text-xs tracking-[0.2em] text-[hsl(0_0%_4%/0.6)] mb-16">Proces</p>
-
-      {/* Desktop horizontal timeline */}
-      <div className="hidden md:block relative">
-        <div className="absolute left-0 right-0 top-10 h-px bg-[hsl(0_0%_4%/0.15)]" />
-        <div className="relative grid grid-cols-5 gap-6">
-          {steps.map(({ n, title, desc, Icon, dark }, i) => (
-            <div
-              key={n}
-              className="reveal flex flex-col items-start"
-              style={{ transitionDelay: `${i * 120}ms` }}
-            >
-              <div
-                className={`w-20 h-20 rounded-full flex items-center justify-center ${
-                  dark
-                    ? "bg-[hsl(0_0%_4%)] text-[hsl(0_0%_96%)]"
-                    : "bg-[hsl(0_0%_85%)] text-[hsl(0_0%_45%)]"
-                }`}
-              >
-                <Icon size={28} strokeWidth={1.5} />
-              </div>
-              <span className="mt-6 text-xs tracking-[0.2em] text-[hsl(0_0%_4%/0.5)]">{n}</span>
-              <h3 className="mt-2 text-lg font-semibold">{title}</h3>
-              <p className="mt-1 text-sm text-[hsl(0_0%_4%/0.65)]">{desc}</p>
-              <a href="#kontakt" className="mt-4 text-[10px] uppercase tracking-[0.2em] border-b border-[hsl(0_0%_4%)] pb-0.5 hover:opacity-60 transition-opacity">
-                Viac info →
-              </a>
-            </div>
-          ))}
-        </div>
+    <div className="max-w-[1500px] mx-auto">
+      <div className="flex items-end justify-between mb-16">
+        <p className="reveal uppercase text-xs tracking-[0.2em] text-[hsl(0_0%_4%/0.6)]">Proces</p>
+        <p className="reveal hidden md:block uppercase text-xs tracking-[0.2em] text-[hsl(0_0%_4%/0.4)]">5 krokov</p>
       </div>
 
-      {/* Mobile vertical timeline */}
-      <div className="md:hidden relative">
-        <div className="absolute left-10 top-0 bottom-0 w-px bg-[hsl(0_0%_4%/0.15)]" />
-        <div className="space-y-12">
-          {steps.map(({ n, title, desc, Icon, dark }, i) => (
-            <div
-              key={n}
-              className="reveal relative flex gap-6 items-start"
+      {/* Cards row — horizontal scroll on mobile, grid on desktop */}
+      <div className="flex md:grid md:grid-cols-[repeat(5,minmax(0,1fr))_auto] gap-4 md:gap-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-6 px-6 md:mx-0 md:px-0 pb-4 md:pb-0">
+        {steps.map((s, i) => (
+          <div key={s.n} className="contents">
+            <article
+              className="reveal group snap-center shrink-0 w-[78%] sm:w-[55%] md:w-auto bg-[#111] text-[hsl(0_0%_96%)] rounded-2xl p-7 md:p-8 flex flex-col justify-between min-h-[260px] md:min-h-[300px] border border-transparent transition-all duration-500 ease-out hover:scale-[1.02] hover:border-[hsl(0_0%_96%/0.25)] hover:shadow-[0_0_40px_-8px_hsl(0_0%_96%/0.15)]"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div
-                className={`relative z-10 w-20 h-20 shrink-0 rounded-full flex items-center justify-center ${
-                  dark
-                    ? "bg-[hsl(0_0%_4%)] text-[hsl(0_0%_96%)]"
-                    : "bg-[hsl(0_0%_85%)] text-[hsl(0_0%_45%)]"
-                }`}
+              <span
+                className="font-light leading-none text-[hsl(0_0%_96%)]"
+                style={{ fontSize: "48px", opacity: 0.2 }}
               >
-                <Icon size={26} strokeWidth={1.5} />
+                {s.n}
+              </span>
+              <div>
+                <h3 className="text-xl md:text-2xl font-semibold tracking-tight">{s.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[hsl(0_0%_96%/0.55)]">{s.desc}</p>
               </div>
-              <div className="pt-2">
-                <span className="text-xs tracking-[0.2em] text-[hsl(0_0%_4%/0.5)]">{n}</span>
-                <h3 className="mt-1 text-lg font-semibold">{title}</h3>
-                <p className="mt-1 text-sm text-[hsl(0_0%_4%/0.65)]">{desc}</p>
-                <a href="#kontakt" className="inline-block mt-3 text-[10px] uppercase tracking-[0.2em] border-b border-[hsl(0_0%_4%)] pb-0.5">
-                  Viac info →
-                </a>
+            </article>
+            {i < steps.length - 1 && (
+              <div className="hidden md:flex items-center justify-center text-2xl text-[hsl(0_0%_4%/0.3)] select-none">
+                →
               </div>
-            </div>
-          ))}
-        </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   </section>
