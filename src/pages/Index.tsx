@@ -1,20 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 
 const projects = [
-  { id: "A001", name: "Real Pro Studio", category: "AI / Foto nástroje", size: "large" as const },
-  { id: "A002", name: "Real Pro Scraper", category: "Monitoring / Notifikácie", size: "small" as const },
-  { id: "A003", name: "CRM na mieru", category: "Systémy / Automatizácia", size: "small" as const },
-  { id: "A004", name: "E-shop riešenia", category: "Web / E-commerce", size: "large" as const },
-  { id: "A005", name: "Hiring kampane", category: "Marketing / Nábor", size: "large" as const },
+  { id: "A001", name: "Webové stránky & aplikácie", category: "Web / Vývoj", gradient: "from-zinc-800 via-zinc-900 to-black" },
+  { id: "A002", name: "Softvér na mieru", category: "CRM / Systémy", gradient: "from-neutral-800 via-neutral-900 to-black" },
+  { id: "A003", name: "Digitálny marketing", category: "Kampane / Rast", gradient: "from-stone-800 via-stone-900 to-black" },
+  { id: "A004", name: "AI riešenia", category: "Automatizácia / AI", gradient: "from-zinc-700 via-zinc-900 to-black" },
+  { id: "A005", name: "Branding & dizajn", category: "Identita / Vizuál", gradient: "from-neutral-700 via-neutral-900 to-black" },
 ];
 
 const services = [
   "Webové stránky & aplikácie",
-  "Softvér na mieru",
-  "Marketing & kampane",
-  "AI & automatizácia",
-  "Branding & dizajn",
-  "Copywriting & obsah",
+  "Softvér na mieru (CRM, dashboardy, interné nástroje)",
+  "Digitálny marketing (Meta Ads, Google Ads, SEO)",
+  "AI & automatizácia (chatboty, workflow, generovanie obsahu)",
+  "Branding & dizajn (logo, vizuálna identita)",
+  "Tvorba obsahu (video, foto, copywriting)",
 ];
 
 function useReveal() {
@@ -37,31 +37,56 @@ function useReveal() {
 }
 
 const Nav = () => (
-  <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/60">
-    <nav className="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-      <a href="#top" className="text-sm font-medium tracking-[0.15em] uppercase">Agencia</a>
-      <ul className="hidden md:flex items-center gap-10 text-sm">
-        <li><a href="#sluzby" className="hover:opacity-60 transition-opacity">Služby</a></li>
-        <li><a href="#projekty" className="hover:opacity-60 transition-opacity">Projekty</a></li>
-        <li><a href="#o-nas" className="hover:opacity-60 transition-opacity">O nás</a></li>
-        <li><a href="#kontakt" className="hover:opacity-60 transition-opacity">Kontakt</a></li>
+  <header className="absolute top-0 left-0 right-0 z-50">
+    <nav className="max-w-[1600px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between text-xs uppercase tracking-[0.2em]">
+      <a href="#top" className="font-medium">Agencia</a>
+      <ul className="hidden md:flex items-center gap-8 text-foreground/80">
+        <li><a href="#sluzby" className="hover:text-foreground transition-colors">Služby</a></li>
+        <li><a href="#projekty" className="hover:text-foreground transition-colors">Projekty</a></li>
+      </ul>
+      <ul className="hidden md:flex items-center gap-8 text-foreground/80">
+        <li><a href="#o-nas" className="hover:text-foreground transition-colors">O nás</a></li>
+        <li><a href="#kontakt" className="hover:text-foreground transition-colors">Kontakt</a></li>
       </ul>
     </nav>
   </header>
 );
 
 const Hero = () => (
-  <section id="top" className="min-h-screen flex items-center px-6 md:px-12 pt-16">
-    <div className="max-w-[1400px] mx-auto w-full">
-      <h1
-        className="font-light leading-[1.05] tracking-[-0.02em] max-w-[18ch] animate-[fadeIn_1.2s_ease-out]"
-        style={{ fontSize: "clamp(2rem, 5vw, 4.5rem)" }}
+  <section id="top" className="relative min-h-screen flex flex-col px-6 md:px-10 pt-28 pb-10" style={{ backgroundColor: "#0a0a0a" }}>
+    <Nav />
+    <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mt-4">
+      {/* Left — taller */}
+      <div className="md:col-span-5 relative aspect-[3/4] md:aspect-auto overflow-hidden animate-[fadeIn_1s_ease-out]">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 30% 20%, #2a2a2a 0%, #161616 45%, #0a0a0a 100%)",
+          }}
+        />
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "repeating-linear-gradient(0deg, #fff 0 1px, transparent 1px 4px)" }} />
+      </div>
+      {/* Right — wider */}
+      <div className="md:col-span-7 relative aspect-[16/10] md:aspect-auto overflow-hidden animate-[fadeIn_1.3s_ease-out]">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, #1f1f1f 0%, #141414 50%, #0a0a0a 100%)",
+          }}
+        />
+        <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: "radial-gradient(circle at 70% 60%, #fff 0%, transparent 60%)" }} />
+      </div>
+    </div>
+    {/* Badge */}
+    <div className="absolute left-6 md:left-10 bottom-8 flex items-center gap-3 animate-[fadeIn_1.6s_ease-out]">
+      <span
+        className="inline-flex items-center px-3 py-1.5 text-[10px] uppercase tracking-[0.2em] font-medium text-background"
+        style={{ backgroundColor: "hsl(var(--brand-accent))" }}
       >
-        Tvoríme digitálne riešenia pre ambiciózne značky.
-      </h1>
-      <p className="label-eyebrow mt-10 animate-[fadeIn_1.6s_ease-out]">
-        Softvérový vývoj &amp; Marketing — Bratislava
-      </p>
+        AGNC® 2024
+      </span>
     </div>
     <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: translateY(0) } }`}</style>
   </section>
@@ -70,9 +95,9 @@ const Hero = () => (
 const ProjectCard = ({ p }: { p: (typeof projects)[number] }) => (
   <article className="reveal group cursor-pointer">
     <div
-      className="relative aspect-[16/9] overflow-hidden transition-transform duration-[600ms] ease-out group-hover:scale-[1.02]"
-      style={{ background: "linear-gradient(135deg, rgba(0,0,0,0.03), rgba(0,0,0,0.08))" }}
+      className={`relative aspect-[16/9] overflow-hidden transition-transform duration-[600ms] ease-out group-hover:scale-[1.02] bg-gradient-to-br ${p.gradient}`}
     >
+      <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(circle at 30% 40%, #fff 0%, transparent 55%)" }} />
       <span className="absolute top-6 left-6 label-eyebrow">{p.id}</span>
       <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
         <h3 className="text-xl md:text-2xl font-semibold tracking-tight">{p.name}</h3>
@@ -130,7 +155,7 @@ const About = () => (
         className="reveal font-light leading-[1.2] tracking-[-0.01em] max-w-[22ch]"
         style={{ fontSize: "clamp(1.75rem, 4vw, 3.5rem)" }}
       >
-        Slovenský tím špecialistov. Staviame softvér, spúšťame kampane a automatizujeme procesy. Bez kompromisov.
+        Slovenský tím špecialistov. Staviame softvér, spúšťame kampane a automatizujeme procesy.
       </p>
       <div className="reveal mt-20 grid md:grid-cols-3 gap-8 text-sm">
         <div>
