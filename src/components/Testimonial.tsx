@@ -4,14 +4,9 @@ type Quote = { white: string; grey: string; author: string };
 
 const quotes: Quote[] = [
   {
-    white: "Profesionálny prístup a rýchle dodanie.",
-    grey: "Za 14 dní sme mali hotový systém, ktorý nám denne ušetrí 4 hodiny práce.",
-    author: "— Ján N., konateľ",
-  },
-  {
-    white: "Konečne vieme koľko zarábame a kde strácame.",
-    grey: "Dashboard zmenil náš biznis.",
-    author: "— Eva K., majiteľka e-shopu",
+    white: "Konečne máme systém, ktorý nám dáva prehľad a šetrí čas.",
+    grey: "Spolupráca bola rýchla, transparentná a výsledok prekonal očakávania.",
+    author: "— J. Novák, konateľ",
   },
 ];
 

@@ -1,23 +1,51 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Process from "@/components/Process";
 import Testimonial from "@/components/Testimonial";
 import BigCta from "@/components/BigCta";
+import TopForm from "@/components/TopForm";
+import Stats from "@/components/Stats";
+import ContactForm from "@/components/ContactForm";
 
 const projects = [
-  { id: "A001", name: "Stratené príležitosti", category: "73% firiem stráca klientov kvôli pomalej reakcii. Vaše webové stránky a aplikácie to zmenia.", gradient: "from-zinc-800 via-zinc-900 to-black" },
-  { id: "A002", name: "Excel namiesto systému", category: "4 hodiny denne na manuálnej práci. CRM to spraví za sekundu.", gradient: "from-neutral-800 via-neutral-900 to-black" },
-  { id: "A003", name: "Peniaze v koši", category: "Väčšina firiem vyhadzuje rozpočet na reklamu bez výsledkov.", gradient: "from-stone-800 via-stone-900 to-black" },
-  { id: "A004", name: "Práca, ktorú robí stroj", category: "Automatizujeme čo vás zdržiava. Vy sa venujete biznisu.", gradient: "from-zinc-700 via-zinc-900 to-black" },
-  { id: "A005", name: "Prvý dojem predáva", category: "Bez silného brandu ste len ďalší v rade.", gradient: "from-neutral-700 via-neutral-900 to-black" },
+  {
+    id: "A001",
+    name: "Webové stránky & aplikácie",
+    desc: "Moderný web, ktorý pracuje za vás. Od prvého dojmu po konverziu.",
+    gradient: "from-zinc-800 via-zinc-900 to-black",
+  },
+  {
+    id: "A002",
+    name: "Inteligentné systémy",
+    desc: "CRM, dashboardy a nástroje, ktoré vám dajú prehľad a ušetria čas.",
+    gradient: "from-neutral-800 via-neutral-900 to-black",
+  },
+  {
+    id: "A003",
+    name: "Marketing s výsledkami",
+    desc: "Kampane, kde viete presne, čo každé euro prinieslo.",
+    gradient: "from-stone-800 via-stone-900 to-black",
+  },
+  {
+    id: "A004",
+    name: "AI pre váš biznis",
+    desc: "Automatizácia, chatboty a nástroje, ktoré pracujú 24/7.",
+    gradient: "from-zinc-700 via-zinc-900 to-black",
+  },
+  {
+    id: "A005",
+    name: "Značka, ktorú si pamätajú",
+    desc: "Logo, vizuál a identita, ktorá vytvára dôveru od prvej sekundy.",
+    gradient: "from-neutral-700 via-neutral-900 to-black",
+  },
 ];
 
-const services: { title: string; question: string }[] = [
-  { title: "Webové stránky", question: "Kedy ste naposledy aktualizovali svoj web?" },
-  { title: "Softvér na mieru", question: "Koľko hodín týždenne strácate na manuálnej práci?" },
-  { title: "Marketing", question: "Viete presne koľko vám zarábajú vaše reklamy?" },
-  { title: "AI & automatizácia", question: "Čo keby váš systém pracoval aj keď spíte?" },
-  { title: "Branding", question: "Pamätá si vás niekto po prvom stretnutí?" },
-  { title: "Tvorba obsahu", question: "Kedy ste naposledy niečo postli na sociálne siete?" },
+const services: { title: string; desc: string }[] = [
+  { title: "Webové stránky & aplikácie", desc: "Od návrhu po nasadenie, optimalizované na konverzie." },
+  { title: "Softvér na mieru", desc: "Systémy presne pre váš biznis, nie kompromisy." },
+  { title: "Platené kampane", desc: "Meta, Google, SEO — transparentne a merateľne." },
+  { title: "AI & automatizácia", desc: "Ušetrite hodiny denne, nech systém robí za vás." },
+  { title: "Branding & dizajn", desc: "Prvý dojem, ktorý otvára dvere." },
+  { title: "Obsah & kreatíva", desc: "Video, foto, copy — obsah čo zaujme aj konvertuje." },
 ];
 
 function useReveal() {
@@ -48,7 +76,7 @@ const Nav = () => (
         <li><a href="#projekty" className="hover:text-foreground transition-colors">Projekty</a></li>
       </ul>
       <ul className="hidden md:flex items-center gap-8 text-foreground/80">
-        <li><a href="#o-nas" className="hover:text-foreground transition-colors">O nás</a></li>
+        <li><a href="#proces" className="hover:text-foreground transition-colors">Proces</a></li>
         <li><a href="#kontakt" className="hover:text-foreground transition-colors">Kontakt</a></li>
       </ul>
     </nav>
@@ -59,7 +87,6 @@ const Hero = () => (
   <section id="top" className="relative min-h-screen flex flex-col px-6 md:px-10 pt-28 pb-10" style={{ backgroundColor: "#0a0a0a" }}>
     <Nav />
     <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mt-4">
-      {/* Left — taller */}
       <div className="md:col-span-5 relative aspect-[3/4] md:aspect-auto overflow-hidden animate-[fadeIn_1s_ease-out]">
         <div
           className="absolute inset-0"
@@ -70,7 +97,6 @@ const Hero = () => (
         />
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "repeating-linear-gradient(0deg, #fff 0 1px, transparent 1px 4px)" }} />
       </div>
-      {/* Right — wider */}
       <div className="md:col-span-7 relative aspect-[16/10] md:aspect-auto overflow-hidden animate-[fadeIn_1.3s_ease-out]">
         <div
           className="absolute inset-0"
@@ -82,25 +108,27 @@ const Hero = () => (
         <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: "radial-gradient(circle at 70% 60%, #fff 0%, transparent 60%)" }} />
       </div>
     </div>
+
     {/* Overlay text — bottom */}
     <div className="absolute left-6 md:left-10 right-6 md:right-10 bottom-24 md:bottom-28 max-w-[1600px] mx-auto pointer-events-none animate-[fadeIn_1.4s_ease-out]">
       <h1
-        className="font-semibold leading-[1.05] tracking-[-0.02em] text-foreground max-w-[20ch]"
-        style={{ fontSize: "clamp(1.75rem, 4vw, 3.5rem)" }}
+        className="font-semibold leading-[1.0] tracking-[-0.03em] text-foreground"
+        style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
       >
-        Vaša konkurencia už má systém. Vy ešte nie.
+        Stratégia. Softvér. Rast.
       </h1>
-      <p className="mt-4 text-sm md:text-base text-foreground/60 max-w-[40ch]">
-        Každý deň bez digitálneho riešenia stojí peniaze.
+      <p className="mt-5 text-sm md:text-lg text-foreground/65 max-w-[55ch]">
+        Pomáhame firmám rásť — lepšími systémami, presnejším marketingom a automatizáciou, ktorá pracuje aj keď vy oddychujete.
       </p>
     </div>
+
     {/* Badge */}
     <div className="absolute left-6 md:left-10 bottom-8 flex items-center gap-3 animate-[fadeIn_1.6s_ease-out]">
       <span
         className="inline-flex items-center px-3 py-1.5 text-[10px] uppercase tracking-[0.2em] font-medium text-background"
         style={{ backgroundColor: "hsl(var(--brand-accent))" }}
       >
-        AGNC® — Prijímame max 5 klientov mesačne
+        Voľná kapacita: 3 miesta
       </span>
     </div>
     <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: translateY(0) } }`}</style>
@@ -116,7 +144,7 @@ const ProjectCard = ({ p }: { p: (typeof projects)[number] }) => (
       <span className="absolute top-6 left-6 label-eyebrow">{p.id}</span>
       <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-8">
         <h3 className="text-xl md:text-2xl font-semibold tracking-tight shrink-0">{p.name}</h3>
-        <span className="text-xs md:text-sm text-foreground/60 max-w-[60ch] leading-relaxed">{p.category}</span>
+        <span className="text-xs md:text-sm text-foreground/60 max-w-[60ch] leading-relaxed">{p.desc}</span>
       </div>
     </div>
   </article>
@@ -125,10 +153,13 @@ const ProjectCard = ({ p }: { p: (typeof projects)[number] }) => (
 const Projects = () => (
   <section id="projekty" className="px-6 md:px-12 py-32 md:py-48">
     <div className="max-w-[1400px] mx-auto">
-      <p className="label-eyebrow reveal mb-6">Vybrané projekty</p>
-      <h2 className="reveal font-light leading-[1.1] tracking-[-0.02em] mb-16" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
-        Problémy, ktoré riešime
+      <p className="label-eyebrow reveal mb-6">Projekty</p>
+      <h2 className="reveal font-light leading-[1.1] tracking-[-0.02em]" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
+        Čo pre vás vieme vytvoriť
       </h2>
+      <p className="reveal mt-4 text-foreground/60 max-w-[50ch] mb-16" style={{ fontSize: "clamp(1rem, 1.5vw, 1.25rem)" }}>
+        Každý projekt je iný. Každé riešenie je na mieru.
+      </p>
       <div className="space-y-6 md:space-y-8">
         <ProjectCard p={projects[0]} />
         <div className="grid md:grid-cols-2 gap-6 md:gap-8">
@@ -147,7 +178,7 @@ const Services = () => (
     <div className="max-w-[1400px] mx-auto">
       <p className="label-eyebrow reveal mb-6">Služby</p>
       <h2 className="reveal font-light leading-[1.1] tracking-[-0.02em] mb-16" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
-        Čo pre vás vieme spraviť
+        Kompletné riešenia pod jednou strechou
       </h2>
       <ul>
         {services.map((s, i) => (
@@ -158,7 +189,7 @@ const Services = () => (
             <span className="label-eyebrow w-12 shrink-0">{String(i + 1).padStart(2, "0")}</span>
             <div className="flex-1 flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 md:gap-8">
               <span className="font-normal" style={{ fontSize: "clamp(1.2rem, 2.5vw, 2rem)" }}>{s.title}</span>
-              <span className="text-sm md:text-base text-foreground/55 md:text-right md:max-w-[40ch]">{s.question}</span>
+              <span className="text-sm md:text-base text-foreground/55 md:text-right md:max-w-[44ch]">{s.desc}</span>
             </div>
           </li>
         ))}
@@ -167,152 +198,62 @@ const Services = () => (
   </section>
 );
 
-const About = () => (
-  <section id="o-nas" className="px-6 md:px-12 py-32 md:py-48">
-    <div className="max-w-[1400px] mx-auto">
-      <p className="label-eyebrow reveal mb-16">O nás</p>
-      <p
-        className="reveal font-light leading-[1.2] tracking-[-0.01em] max-w-[22ch]"
-        style={{ fontSize: "clamp(1.75rem, 4vw, 3.5rem)" }}
-      >
-        Slovenský tím špecialistov. Staviame softvér, spúšťame kampane a automatizujeme procesy.
-      </p>
-      <div className="reveal mt-20 grid md:grid-cols-3 gap-8 text-sm">
-        <div>
-          <p className="label-eyebrow mb-3">Adresa</p>
-          <p>Bratislava, Slovensko</p>
+const Contact = () => (
+  <section
+    id="kontakt"
+    className="px-6 md:px-12 py-32 md:py-48"
+    style={{ backgroundColor: "#F5F5F0", color: "hsl(0 0% 4%)" }}
+  >
+    <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 md:gap-24">
+      <div className="reveal">
+        <p className="uppercase text-[10px] tracking-[0.25em] text-[hsl(0_0%_4%/0.55)] mb-6">
+          Kontakt
+        </p>
+        <h2
+          className="font-semibold leading-[1.05] tracking-[-0.02em]"
+          style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
+        >
+          Nový projekt na obzore?
+        </h2>
+        <p
+          className="mt-6 text-[hsl(0_0%_4%/0.7)] max-w-[42ch]"
+          style={{ fontSize: "clamp(1rem, 1.5vw, 1.2rem)" }}
+        >
+          Napíšte nám pár slov. Ozveme sa do 24 hodín a navrhneme ďalšie kroky.
+        </p>
+        <div className="mt-12 space-y-4">
+          <a
+            href="mailto:info@agencia.sk"
+            className="block font-medium underline-offset-8 hover:underline transition-all"
+            style={{ fontSize: "clamp(1.25rem, 2.5vw, 2rem)" }}
+          >
+            info@agencia.sk
+          </a>
+          <p className="text-[hsl(0_0%_4%/0.7)]" style={{ fontSize: "clamp(1rem, 1.5vw, 1.25rem)" }}>
+            +421 902 177 653
+          </p>
+          <p className="text-[hsl(0_0%_4%/0.6)]">Bratislava, Slovensko</p>
         </div>
-        <div>
-          <p className="label-eyebrow mb-3">Email</p>
-          <p>info@agencia.sk</p>
-        </div>
-        <div>
-          <p className="label-eyebrow mb-3">Telefón</p>
-          <p>+421 902 177 653</p>
-        </div>
+        <p className="mt-12 uppercase text-[10px] tracking-[0.25em] text-[hsl(0_0%_4%/0.55)]">
+          0€ vopred · Platíte po dodaní · Odpovieme do 24h
+        </p>
+      </div>
+      <div className="self-center">
+        <ContactForm variant="warm" buttonLabel="Dohodnúť stretnutie →" />
       </div>
     </div>
   </section>
 );
 
-const Contact = () => {
-  const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">("idle");
-
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name.trim() || !form.phone.trim()) return;
-    setStatus("sending");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      setStatus(res.ok ? "ok" : "err");
-      if (res.ok) setForm({ name: "", phone: "", email: "", message: "" });
-    } catch {
-      setStatus("err");
-    }
-  };
-
-  return (
-    <section id="kontakt" className="px-6 md:px-12 py-32 md:py-48 bg-secondary/40">
-      <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 md:gap-24">
-        <div className="reveal">
-          <p className="label-eyebrow mb-10">Kontakt</p>
-          <h2 className="font-light leading-[1.1] tracking-[-0.02em]" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
-            Prvý krok je zadarmo.
-          </h2>
-          <p className="mt-6 text-foreground/70 max-w-[40ch]" style={{ fontSize: "clamp(1rem, 1.5vw, 1.25rem)" }}>
-            15 minút, žiadne záväzky. Poviete čo nefunguje — my povieme čo s tým.
-          </p>
-          <a
-            href="mailto:info@agencia.sk"
-            className="block mt-12 font-light underline-offset-8 hover:underline transition-all"
-            style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
-          >
-            info@agencia.sk
-          </a>
-          <p className="mt-4 text-foreground/70" style={{ fontSize: "clamp(1.1rem, 2vw, 1.5rem)" }}>
-            +421 902 177 653
-          </p>
-        </div>
-        <form onSubmit={submit} className="reveal flex flex-col gap-6 self-end w-full">
-          <div>
-            <label className="label-eyebrow block mb-2">Meno</label>
-            <input
-              required
-              maxLength={100}
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full bg-transparent border-b border-border py-3 outline-none focus:border-foreground transition-colors"
-            />
-          </div>
-          <div>
-            <label className="label-eyebrow block mb-2">Telefón *</label>
-            <input
-              required
-              type="tel"
-              maxLength={40}
-              value={form.phone}
-              onChange={(e) => setForm({ ...form, phone: e.target.value })}
-              className="w-full bg-transparent border-b border-border py-3 outline-none focus:border-foreground transition-colors"
-            />
-          </div>
-          <div>
-            <label className="label-eyebrow block mb-2">Email</label>
-            <input
-              type="email"
-              maxLength={255}
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full bg-transparent border-b border-border py-3 outline-none focus:border-foreground transition-colors"
-            />
-          </div>
-          <div>
-            <label className="label-eyebrow block mb-2">Správa</label>
-            <textarea
-              maxLength={2000}
-              rows={4}
-              value={form.message}
-              onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="w-full bg-transparent border-b border-border py-3 outline-none focus:border-foreground transition-colors resize-none"
-            />
-          </div>
-          <button
-            type="submit"
-            disabled={status === "sending"}
-            className="self-start mt-4 inline-flex items-center gap-2 px-6 py-3 text-xs uppercase tracking-[0.2em] font-medium text-background hover:opacity-90 transition-opacity disabled:opacity-40"
-            style={{ backgroundColor: "hsl(var(--brand-accent))" }}
-          >
-            {status === "sending" ? "Odosielam…" : status === "ok" ? "Odoslané ✓" : "Zavolajte mi →"}
-          </button>
-          <p className="text-xs text-foreground/50">Odpovieme do 24 hodín. Bez spamu. Bez záväzkov.</p>
-          {status === "err" && <p className="text-xs text-destructive">Nepodarilo sa odoslať. Skúste to znova.</p>}
-        </form>
-      </div>
-    </section>
-  );
-};
-
 const Footer = () => (
   <footer className="border-t border-border px-6 md:px-12 py-10">
-    <div className="max-w-[1400px] mx-auto flex flex-col gap-6 text-sm">
-      <p className="text-xs uppercase tracking-[0.2em] text-foreground/70">
-        0€ vopred · Platíte po dodaní · Max 5 klientov mesačne
+    <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-sm">
+      <p className="font-medium tracking-[0.05em]">
+        AGENCIA — <span className="text-foreground/60">Stratégia. Softvér. Rast.</span>
       </p>
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div className="flex items-center gap-6">
-          <span className="font-medium tracking-[0.15em] uppercase">Agencia</span>
-          <span className="text-foreground/60">Bratislava</span>
-        </div>
-        <div className="flex items-center gap-6">
-          <a href="#" className="hover:opacity-60 transition-opacity">LinkedIn</a>
-          <a href="#" className="hover:opacity-60 transition-opacity">Instagram</a>
-        </div>
-        <p className="text-xs text-foreground/50">© 2026 Michalka Summit s.r.o.</p>
-      </div>
+      <p className="text-xs text-foreground/55">
+        © 2026 Michalka Summit s.r.o. · Bratislava, Slovensko
+      </p>
     </div>
   </footer>
 );
@@ -324,12 +265,13 @@ const Index = () => {
     <div ref={ref} className="bg-background text-foreground min-h-screen">
       <main>
         <Hero />
+        <TopForm />
+        <Stats />
         <Projects />
-        <Process />
         <Services />
+        <Process />
         <Testimonial />
         <BigCta />
-        <About />
         <Contact />
       </main>
       <Footer />
