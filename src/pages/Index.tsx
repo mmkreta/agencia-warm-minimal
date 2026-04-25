@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import Process from "@/components/Process";
+import Testimonial from "@/components/Testimonial";
+import BigCta from "@/components/BigCta";
 
 const projects = [
   { id: "A001", name: "Webové stránky & aplikácie", category: "Web / Vývoj", gradient: "from-zinc-800 via-zinc-900 to-black" },
@@ -286,7 +289,10 @@ const Index = () => {
       <main>
         <Hero />
         <Projects />
+        <Process />
         <Services />
+        <Testimonial />
+        <BigCta />
         <About />
         <Contact />
       </main>
