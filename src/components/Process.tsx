@@ -14,12 +14,13 @@ const Process = () => (
         <p className="reveal hidden md:block uppercase text-xs tracking-[0.2em] text-[hsl(0_0%_4%/0.4)]">5 krokov</p>
       </div>
 
-      {/* Cards row — horizontal scroll on mobile, grid on desktop */}
-      <div className="flex md:grid md:grid-cols-[repeat(5,minmax(0,1fr))_auto] gap-4 md:gap-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-6 px-6 md:mx-0 md:px-0 pb-4 md:pb-0">
+      {/* Cards row — horizontal scroll on mobile, equal flex on desktop */}
+      <div className="flex gap-4 md:gap-3 items-stretch overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-6 px-6 md:mx-0 md:px-0 pb-4 md:pb-0">
         {steps.map((s, i) => (
-          <div key={s.n} className="contents">
+          <>
             <article
-              className="reveal group snap-center shrink-0 w-[78%] sm:w-[55%] md:w-auto bg-[#111] text-[hsl(0_0%_96%)] rounded-2xl p-7 md:p-8 flex flex-col justify-between min-h-[260px] md:min-h-[300px] border border-transparent transition-all duration-500 ease-out hover:scale-[1.02] hover:border-[hsl(0_0%_96%/0.25)] hover:shadow-[0_0_40px_-8px_hsl(0_0%_96%/0.15)]"
+              key={s.n}
+              className="reveal group snap-center shrink-0 md:shrink md:flex-1 md:min-w-0 w-[78%] sm:w-[55%] bg-[#111] text-[hsl(0_0%_96%)] rounded-2xl p-7 md:p-8 flex flex-col justify-between min-h-[260px] md:min-h-[300px] border border-transparent transition-all duration-500 ease-out hover:scale-[1.02] hover:border-[hsl(0_0%_96%/0.25)] hover:shadow-[0_0_40px_-8px_hsl(0_0%_96%/0.15)]"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <span
@@ -34,11 +35,14 @@ const Process = () => (
               </div>
             </article>
             {i < steps.length - 1 && (
-              <div className="hidden md:flex items-center justify-center text-2xl text-[hsl(0_0%_4%/0.3)] select-none">
+              <div
+                key={`arrow-${i}`}
+                className="hidden md:flex items-center justify-center shrink-0 text-2xl text-[hsl(0_0%_4%/0.3)] select-none"
+              >
                 →
               </div>
             )}
-          </div>
+          </>
         ))}
       </div>
     </div>
