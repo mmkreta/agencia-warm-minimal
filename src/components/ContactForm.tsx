@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type Variant = "warm" | "warm-compact";
+type Variant = "warm" | "warm-compact" | "dark-compact";
 
 interface ContactFormProps {
   variant?: Variant;
@@ -35,22 +35,21 @@ const ContactForm = ({
     }
   };
 
-  const inputCls =
-    variant === "warm" || variant === "warm-compact"
-      ? "w-full bg-transparent border-b border-[hsl(0_0%_4%/0.2)] py-3 outline-none focus:border-[hsl(0_0%_4%)] transition-colors text-[hsl(0_0%_4%)] placeholder:text-[hsl(0_0%_4%/0.4)]"
-      : "w-full bg-transparent border-b border-border py-3 outline-none focus:border-foreground transition-colors";
+  const isDark = variant === "dark-compact";
 
-  const labelCls =
-    variant === "warm" || variant === "warm-compact"
-      ? "uppercase text-[10px] tracking-[0.2em] text-[hsl(0_0%_4%/0.55)] block mb-2"
-      : "label-eyebrow block mb-2";
+  const inputCls = isDark
+    ? "w-full bg-[#1a1a1a] border border-white/10 rounded-md px-4 py-4 outline-none focus:border-white/40 transition-colors text-[hsl(0_0%_96%)] placeholder:text-white/30"
+    : "w-full bg-transparent border-b border-[hsl(0_0%_4%/0.2)] py-3 outline-none focus:border-[hsl(0_0%_4%)] transition-colors text-[hsl(0_0%_4%)] placeholder:text-[hsl(0_0%_4%/0.4)]";
 
-  const helperCls =
-    variant === "warm" || variant === "warm-compact"
-      ? "text-xs text-[hsl(0_0%_4%/0.55)]"
-      : "text-xs text-foreground/50";
+  const labelCls = isDark
+    ? "uppercase text-[10px] tracking-[0.25em] text-white/55 block mb-3"
+    : "uppercase text-[10px] tracking-[0.2em] text-[hsl(0_0%_4%/0.55)] block mb-2";
 
-  const compact = variant === "warm-compact";
+  const helperCls = isDark
+    ? "text-xs text-white/50"
+    : "text-xs text-[hsl(0_0%_4%/0.55)]";
+
+  const compact = variant === "warm-compact" || variant === "dark-compact";
   const gridCls = compact
     ? "grid grid-cols-1 md:grid-cols-2 gap-5"
     : "flex flex-col gap-5";
@@ -103,11 +102,11 @@ const ContactForm = ({
         )}
       </div>
 
-      <div className="mt-8 flex flex-col gap-3 items-start">
+      <div className={`${isDark ? "mt-10" : "mt-8"} flex flex-col gap-3 items-start`}>
         <button
           type="submit"
           disabled={status === "sending"}
-          className="inline-flex items-center gap-2 px-6 py-4 text-xs uppercase tracking-[0.2em] font-medium text-[hsl(0_0%_96%)] hover:opacity-90 transition-opacity disabled:opacity-40"
+          className={`inline-flex items-center gap-2 ${isDark ? "px-8 py-5 text-sm" : "px-6 py-4 text-xs"} uppercase tracking-[0.2em] font-medium text-[hsl(0_0%_96%)] hover:opacity-90 transition-opacity disabled:opacity-40 rounded-md`}
           style={{ backgroundColor: "hsl(var(--brand-accent))" }}
         >
           {status === "sending"
