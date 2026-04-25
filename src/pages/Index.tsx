@@ -109,19 +109,6 @@ const Hero = () => (
       </div>
     </div>
 
-    {/* Overlay text — bottom */}
-    <div className="absolute left-6 md:left-10 right-6 md:right-10 bottom-24 md:bottom-28 max-w-[1600px] mx-auto pointer-events-none animate-[fadeIn_1.4s_ease-out]">
-      <h1
-        className="font-semibold leading-[1.0] tracking-[-0.03em] text-foreground"
-        style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
-      >
-        Stratégia. Softvér. Rast.
-      </h1>
-      <p className="mt-5 text-sm md:text-lg text-foreground/65 max-w-[55ch]">
-        Pomáhame firmám rásť — lepšími systémami, presnejším marketingom a automatizáciou, ktorá pracuje aj keď vy oddychujete.
-      </p>
-    </div>
-
     {/* Badge */}
     <div className="absolute left-6 md:left-10 bottom-8 flex items-center gap-3 animate-[fadeIn_1.6s_ease-out]">
       <span
