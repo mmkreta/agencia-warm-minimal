@@ -3,7 +3,7 @@ import ContactForm from "./ContactForm";
 const TopForm = () => (
   <section
     id="dohodnut"
-    className="px-6 md:px-12 py-16 md:py-24"
+    className="px-6 md:px-12 pt-6 pb-16 md:pt-8 md:pb-24"
     style={{ backgroundColor: "#0a0a0a", color: "hsl(0 0% 96%)" }}
   >
     <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-14 md:gap-24 items-start">
