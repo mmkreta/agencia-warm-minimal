@@ -7,36 +7,36 @@ const steps = [
 ];
 
 const Process = () => (
-  <section id="proces" className="px-6 md:px-12 py-32 md:py-48 bg-[hsl(0_0%_96%)] text-[hsl(0_0%_4%)]">
-    <div className="max-w-[1500px] mx-auto">
+  <section id="proces" className="px-6 md:px-10 py-32 md:py-48 bg-[hsl(0_0%_96%)] text-[hsl(0_0%_4%)]">
+    <div className="max-w-[1200px] mx-auto">
       <div className="flex items-end justify-between mb-16">
         <p className="reveal uppercase text-xs tracking-[0.2em] text-[hsl(0_0%_4%/0.6)]">Proces</p>
         <p className="reveal hidden md:block uppercase text-xs tracking-[0.2em] text-[hsl(0_0%_4%/0.4)]">5 krokov</p>
       </div>
 
       {/* Cards row — horizontal scroll on mobile, equal flex on desktop */}
-      <div className="flex gap-4 md:gap-3 items-stretch overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-6 px-6 md:mx-0 md:px-0 pb-4 md:pb-0">
+      <div className="flex gap-3 md:gap-2 items-stretch overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-6 px-6 md:mx-0 md:px-0 pb-4 md:pb-0 justify-center">
         {steps.flatMap((s, i) => [
           <article
             key={s.n}
-            className="reveal group snap-center shrink-0 md:shrink md:flex-1 md:min-w-0 w-[78%] sm:w-[55%] bg-[#111] text-[hsl(0_0%_96%)] rounded-2xl p-7 md:p-8 flex flex-col justify-between min-h-[260px] md:min-h-[300px] border border-transparent transition-all duration-500 ease-out hover:scale-[1.02] hover:border-[hsl(0_0%_96%/0.25)] hover:shadow-[0_0_40px_-8px_hsl(0_0%_96%/0.15)]"
+            className="reveal group snap-center shrink-0 md:shrink-0 md:basis-0 md:flex-1 w-[78%] sm:w-[55%] bg-[#111] text-[hsl(0_0%_96%)] rounded-2xl p-5 md:p-6 flex flex-col justify-between min-h-[260px] md:min-h-[280px] border border-transparent transition-all duration-500 ease-out hover:scale-[1.02] hover:border-[hsl(0_0%_96%/0.25)] hover:shadow-[0_0_40px_-8px_hsl(0_0%_96%/0.15)]"
             style={{ transitionDelay: `${i * 100}ms` }}
           >
             <span
               className="font-light leading-none text-[hsl(0_0%_96%)]"
-              style={{ fontSize: "48px", opacity: 0.2 }}
+              style={{ fontSize: "44px", opacity: 0.2 }}
             >
               {s.n}
             </span>
             <div>
-              <h3 className="text-xl md:text-2xl font-semibold tracking-tight">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[hsl(0_0%_96%/0.55)]">{s.desc}</p>
+              <h3 className="text-base md:text-lg font-semibold tracking-tight whitespace-nowrap">{s.title}</h3>
+              <p className="mt-2 text-xs md:text-[13px] leading-relaxed text-[hsl(0_0%_96%/0.55)] whitespace-normal">{s.desc}</p>
             </div>
           </article>,
           i < steps.length - 1 ? (
             <div
               key={`arrow-${i}`}
-              className="hidden md:flex items-center justify-center shrink-0 text-2xl text-[hsl(0_0%_4%/0.3)] select-none"
+              className="hidden md:flex items-center justify-center shrink-0 w-4 text-lg text-[hsl(0_0%_4%/0.3)] select-none"
             >
               →
             </div>
