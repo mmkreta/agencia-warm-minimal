@@ -68,24 +68,25 @@ function useReveal() {
 
 const Nav = () => (
   <header className="absolute top-0 left-0 right-0 z-50">
-    <nav className="max-w-[1600px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between text-xs uppercase tracking-[0.2em]">
-      <a href="#top" className="font-medium">Agencia</a>
-      <ul className="hidden md:flex items-center gap-8 text-foreground/80">
-        <li><a href="#sluzby" className="hover:text-foreground transition-colors">Služby</a></li>
+    <nav className="px-6 md:px-10 h-12 flex items-center justify-between text-[11px] uppercase tracking-[0.18em]">
+      <a href="#top" className="font-medium">AGENCIA</a>
+      <ul className="hidden md:flex items-center gap-10 text-foreground/80">
         <li><a href="#projekty" className="hover:text-foreground transition-colors">Projekty</a></li>
+        <li><a href="#sluzby" className="hover:text-foreground transition-colors">Služby</a></li>
       </ul>
-      <ul className="hidden md:flex items-center gap-8 text-foreground/80">
+      <ul className="hidden md:flex items-center gap-10 text-foreground/80">
         <li><a href="#proces" className="hover:text-foreground transition-colors">Proces</a></li>
-        <li><a href="#kontakt" className="hover:text-foreground transition-colors">Kontakt</a></li>
+        <li><a href="#dohodnut" className="hover:text-foreground transition-colors">Stretnutie</a></li>
       </ul>
+      <a href="#kontakt" className="hover:text-foreground transition-colors">Kontakt</a>
     </nav>
   </header>
 );
 
 const Hero = () => (
-  <section id="top" className="relative min-h-screen flex flex-col px-6 md:px-10 pt-28 pb-10" style={{ backgroundColor: "#0a0a0a" }}>
+  <section id="top" className="relative min-h-screen flex flex-col px-6 md:px-10 pt-16 pb-10" style={{ backgroundColor: "#0a0a0a" }}>
     <Nav />
-    <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mt-4">
+    <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mt-0">
       <div className="md:col-span-5 relative aspect-[3/4] md:aspect-auto overflow-hidden animate-[fadeIn_1s_ease-out]">
         <div
           className="absolute inset-0"
