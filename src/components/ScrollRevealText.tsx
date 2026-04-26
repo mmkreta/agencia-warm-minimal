@@ -41,7 +41,7 @@ const ScrollRevealText = () => {
   return (
     <section
       className="px-6 md:px-10 py-20 md:py-28"
-      style={{ backgroundColor: "hsl(40 20% 96%)" }}
+      style={{ backgroundColor: "var(--page-bg)" }}
     >
       <div ref={wrapRef} className="max-w-[1600px] mx-auto">
         <p

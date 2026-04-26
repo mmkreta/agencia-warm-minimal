@@ -5,6 +5,7 @@ import BigCta from "@/components/BigCta";
 import TopForm from "@/components/TopForm";
 import ContactForm from "@/components/ContactForm";
 import ScrollRevealText from "@/components/ScrollRevealText";
+import ThemeToggle from "@/components/ThemeToggle";
 import useScrambleOnClick from "@/hooks/useScrambleOnClick";
 
 const projects = [
@@ -71,7 +72,10 @@ function useReveal() {
 const Nav = () => (
   <header className="absolute top-0 left-0 right-0 z-50">
     <nav className="px-6 md:px-10 h-9 flex items-center justify-between text-[11px] uppercase tracking-[0.18em]">
-      <a href="#top" className="font-medium">AGENCIA</a>
+      <div className="flex items-center gap-4">
+        <ThemeToggle />
+        <a href="#top" className="font-medium">AGENCIA</a>
+      </div>
       <ul className="hidden md:flex items-center gap-10 text-foreground/80">
         <li><a href="#projekty" className="hover:text-foreground transition-colors">Projekty</a></li>
         <li><a href="#sluzby" className="hover:text-foreground transition-colors">Služby</a></li>
@@ -86,7 +90,7 @@ const Nav = () => (
 );
 
 const Hero = () => (
-  <section id="top" className="relative min-h-screen flex flex-col px-6 md:px-10 pt-10 pb-10" style={{ backgroundColor: "hsl(40 20% 96%)" }}>
+  <section id="top" className="relative min-h-screen flex flex-col px-6 md:px-10 pt-10 pb-10" style={{ backgroundColor: "var(--page-bg)" }}>
     <Nav />
     <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mt-0">
       <div className="md:col-span-5 relative aspect-[3/4] md:aspect-auto overflow-hidden animate-[fadeIn_1s_ease-out]">
@@ -140,7 +144,7 @@ const ProjectCard = ({ p }: { p: (typeof projects)[number] }) => (
 );
 
 const Projects = () => (
-  <section id="projekty" className="px-6 md:px-12 py-16 md:py-24" style={{ backgroundColor: "hsl(40 20% 96%)", color: "hsl(0 0% 8%)" }}>
+  <section id="projekty" className="px-6 md:px-12 py-16 md:py-24" style={{ backgroundColor: "var(--page-bg)", color: "var(--page-fg)" }}>
     <div className="max-w-[1400px] mx-auto">
       <div className="space-y-6 md:space-y-8">
         <ProjectCard p={projects[0]} />
