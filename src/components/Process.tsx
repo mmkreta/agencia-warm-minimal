@@ -11,7 +11,7 @@ const Process = () => (
     <div className="max-w-[1200px] mx-auto">
       <div className="mb-16">
         <p className="reveal uppercase text-xs tracking-[0.2em] text-[hsl(0_0%_8%/0.55)] mb-6">Proces</p>
-        <h2 className="reveal font-black uppercase tracking-[-0.02em] leading-[0.95]" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
+        <h2 className="reveal font-bold tracking-[-0.025em] leading-[1.05]" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
           Jednoduchý proces, jasné výsledky
         </h2>
         <p className="reveal mt-4 text-base md:text-lg text-[hsl(0_0%_8%/0.55)]">
