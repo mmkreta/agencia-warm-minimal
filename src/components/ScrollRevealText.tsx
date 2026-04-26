@@ -12,15 +12,21 @@ const ScrollRevealText = () => {
       if (!wrap) return;
       const spans = wrap.querySelectorAll<HTMLSpanElement>("[data-word]");
       const vh = window.innerHeight;
-      spans.forEach((span) => {
-        const r = span.getBoundingClientRect();
-        const center = r.top + r.height / 2;
-        const progress = Math.min(
+      const rect = wrap.getBoundingClientRect();
+      // Section progress: 0 when section bottom enters viewport, 1 when section top hits ~30% from top
+      const total = rect.height + vh * 0.5;
+      const passed = vh - rect.top;
+      const sectionProgress = Math.min(1, Math.max(0, passed / total));
+      const count = spans.length;
+      spans.forEach((span, i) => {
+        // each word has its own slice of the progress
+        const wordStart = i / count;
+        const wordEnd = (i + 1) / count;
+        const local = Math.min(
           1,
-          Math.max(0, (vh - center) / (vh * 0.6))
+          Math.max(0, (sectionProgress - wordStart) / (wordEnd - wordStart))
         );
-        const lightness = 25 + progress * 75; // 25% -> 100%
-        span.style.color = `hsl(0 0% ${lightness}%)`;
+        span.style.opacity = String(0.2 + local * 0.8);
       });
     };
     onScroll();
@@ -55,8 +61,8 @@ const ScrollRevealText = () => {
             <span
               key={i}
               data-word
-              className="inline-block transition-colors duration-200 mr-[0.25em]"
-              style={{ color: "hsl(0 0% 25%)" }}
+              className="inline-block transition-opacity duration-150 mr-[0.25em]"
+              style={{ opacity: 0.2, color: "hsl(0 0% 100%)" }}
             >
               {word}
             </span>
