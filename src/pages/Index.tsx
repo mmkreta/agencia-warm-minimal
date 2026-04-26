@@ -7,6 +7,7 @@ import ContactForm from "@/components/ContactForm";
 import ScrollRevealText from "@/components/ScrollRevealText";
 import ThemeToggle from "@/components/ThemeToggle";
 import useScrambleOnClick from "@/hooks/useScrambleOnClick";
+import heroWorkspace from "@/assets/hero-workspace.jpg";
 
 const projects = [
   {
@@ -94,14 +95,12 @@ const Hero = () => (
     <Nav />
     <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mt-0">
       <div className="md:col-span-5 relative aspect-[3/4] md:aspect-auto overflow-hidden animate-[fadeIn_1s_ease-out]">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 30% 20%, #2a2a2a 0%, #161616 45%, #0a0a0a 100%)",
-          }}
+        <img
+          src={heroWorkspace}
+          alt="Workspace s notebookom a tabletom v modernom interiéri s výhľadom na hory"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
         />
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "repeating-linear-gradient(0deg, #fff 0 1px, transparent 1px 4px)" }} />
       </div>
       <div className="md:col-span-7 relative aspect-[16/10] md:aspect-auto overflow-hidden animate-[fadeIn_1.3s_ease-out]">
         <div
