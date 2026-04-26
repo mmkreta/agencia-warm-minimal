@@ -122,11 +122,11 @@ All colors MUST be HSL.
     transition: filter 0.6s ease;
   }
 
-  /* When dark mode is active (full-page invert), keep media looking natural */
-  html[data-theme="dark"] img,
-  html[data-theme="dark"] video,
-  html[data-theme="dark"] picture,
-  html[data-theme="dark"] svg image {
+  /* When light mode is active (full-page invert), counter-invert media so it stays natural */
+  html[data-theme="light"] img,
+  html[data-theme="light"] video,
+  html[data-theme="light"] picture,
+  html[data-theme="light"] svg image {
     filter: invert(1) hue-rotate(180deg);
   }
 }
