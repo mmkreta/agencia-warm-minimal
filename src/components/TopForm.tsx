@@ -4,7 +4,7 @@ const TopForm = () => (
   <section
     id="dohodnut"
     className="px-6 md:px-12 pt-6 pb-16 md:pt-8 md:pb-24"
-    style={{ backgroundColor: "hsl(40 20% 96%)", color: "hsl(0 0% 96%)" }}
+    style={{ backgroundColor: "hsl(40 20% 96%)", color: "hsl(0 0% 8%)" }}
   >
     <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-14 md:gap-24 items-stretch">
       {/* Vizuál — rovnaký štýl ako v hero */}
@@ -25,7 +25,7 @@ const TopForm = () => (
         />
       </div>
       <ContactForm
-        variant="dark-compact"
+        variant="warm"
         buttonLabel="Dohodnúť stretnutie →"
         includeMeeting
         helperText="Vyberte si termín online stretnutia. Potvrdíme do 24 hodín."
