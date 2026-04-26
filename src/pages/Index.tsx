@@ -86,7 +86,7 @@ const Nav = () => (
 );
 
 const Hero = () => (
-  <section id="top" className="relative min-h-screen flex flex-col px-6 md:px-10 pt-10 pb-10" style={{ backgroundColor: "#0a0a0a" }}>
+  <section id="top" className="relative min-h-screen flex flex-col px-6 md:px-10 pt-10 pb-10" style={{ backgroundColor: "hsl(40 20% 96%)" }}>
     <Nav />
     <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mt-0">
       <div className="md:col-span-5 relative aspect-[3/4] md:aspect-auto overflow-hidden animate-[fadeIn_1s_ease-out]">
