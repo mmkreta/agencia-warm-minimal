@@ -77,12 +77,12 @@ const Nav = () => (
         <a href="#top" className="font-medium">AGENCIA</a>
       </div>
       <ul className="hidden md:flex items-center gap-10 text-foreground/80">
-        <li><a href="#projekty" className="hover:text-foreground transition-colors">Projekty</a></li>
-        <li><a href="#sluzby" className="hover:text-foreground transition-colors">Služby</a></li>
+        <li><a href="#sluzby" className="hover:text-foreground transition-colors">Softvér</a></li>
+        <li><a href="#projekty" className="hover:text-foreground transition-colors">Weby</a></li>
       </ul>
       <ul className="hidden md:flex items-center gap-10 text-foreground/80">
-        <li><a href="#proces" className="hover:text-foreground transition-colors">Proces</a></li>
-        <li><a href="#dohodnut" className="hover:text-foreground transition-colors">Stretnutie</a></li>
+        <li><a href="#sluzby" className="hover:text-foreground transition-colors">Marketing</a></li>
+        <li><a href="#sluzby" className="hover:text-foreground transition-colors">AI</a></li>
       </ul>
       <a href="#kontakt" className="hover:text-foreground transition-colors">Kontakt</a>
     </nav>
