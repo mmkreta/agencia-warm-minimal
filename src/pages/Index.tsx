@@ -163,7 +163,7 @@ const Services = () => (
   <section id="sluzby" className="px-6 md:px-12 py-32 md:py-48" style={{ backgroundColor: "#F5F5F0", color: "hsl(0 0% 4%)" }}>
     <div className="max-w-[1400px] mx-auto">
       <p className="reveal uppercase text-[10px] tracking-[0.25em] text-[hsl(0_0%_4%/0.55)] mb-6">Služby</p>
-      <h2 className="reveal font-light leading-[1.1] tracking-[-0.02em] mb-16" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
+      <h2 className="reveal font-bold leading-[1.1] tracking-[-0.02em] mb-16" style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}>
         Kompletné riešenia pod jednou strechou
       </h2>
       <ul>
