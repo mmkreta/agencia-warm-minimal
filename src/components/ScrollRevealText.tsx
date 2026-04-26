@@ -22,16 +22,18 @@ const ScrollRevealText = () => {
       const passed = vh - rect.top + startOffset;
       const sectionProgress = Math.min(1, Math.max(0, passed / total));
       const count = spans.length;
-      spans.forEach((span, i) => {
-        // each word has its own slice of the progress
-        const wordStart = i / count;
-        const wordEnd = (i + 1) / count;
-        const local = Math.min(
-          1,
-          Math.max(0, (sectionProgress - wordStart) / (wordEnd - wordStart))
-        );
-        span.style.opacity = String(0.2 + local * 0.8);
-      });
+        spans.forEach((span, i) => {
+          // each word has its own slice of the progress
+          const wordStart = i / count;
+          const wordEnd = (i + 1) / count;
+          const local = Math.min(
+            1,
+            Math.max(0, (sectionProgress - wordStart) / (wordEnd - wordStart))
+          );
+          // interpolate from light gray (hsl 0 0% 70%) to black (hsl 0 0% 4%)
+          const lightness = 70 - local * 66;
+          span.style.color = `hsl(0 0% ${lightness}%)`;
+        });
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -55,7 +57,7 @@ const ScrollRevealText = () => {
           O nás
         </p>
         <h2
-          className="font-bold leading-[1.1] tracking-[-0.02em]"
+          className="font-black leading-[1.05] tracking-[-0.03em]"
           style={{
             fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
             fontSize: "clamp(1.8rem, 4.5vw, 3.6rem)",
@@ -65,8 +67,8 @@ const ScrollRevealText = () => {
             <span
               key={i}
               data-word
-              className="inline-block transition-opacity duration-150 mr-[0.25em]"
-              style={{ opacity: 0.2, color: "currentColor" }}
+              className="inline-block transition-colors duration-150 mr-[0.25em]"
+              style={{ color: "hsl(0 0% 70%)" }}
             >
               {word}
             </span>
