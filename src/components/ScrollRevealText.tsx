@@ -13,14 +13,14 @@ const ScrollRevealText = () => {
       const spans = wrap.querySelectorAll<HTMLSpanElement>("[data-word]");
       const vh = window.innerHeight;
       const rect = wrap.getBoundingClientRect();
-      // Reveal aggressively: start before the section enters, and be fully done
-      // by the time the section center reaches the viewport center.
-      // progress = 0 when section top is at bottom of viewport (+ pre-trigger)
-      // progress = 1 when section center reaches viewport center
-      const startOffset = vh * 0.4; // pre-trigger before section enters
-      const total = vh * 0.5 + rect.height * 0.5; // distance until centered
-      const passed = vh - rect.top + startOffset;
-      const sectionProgress = Math.min(1, Math.max(0, passed / total));
+      // Symmetric scroll reveal driven purely by scroll position.
+      // progress goes 0 -> 1 as section enters from bottom and reaches center,
+      // then 1 -> 0 as it leaves toward the top. Words react both ways.
+      const sectionCenter = rect.top + rect.height / 2;
+      const viewportCenter = vh / 2;
+      const distance = Math.abs(sectionCenter - viewportCenter);
+      const range = vh / 2 + rect.height / 2;
+      const sectionProgress = Math.min(1, Math.max(0, 1 - distance / range));
       const count = spans.length;
         spans.forEach((span, i) => {
           // each word has its own slice of the progress
