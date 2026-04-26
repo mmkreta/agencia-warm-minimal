@@ -4,6 +4,7 @@ import Testimonial from "@/components/Testimonial";
 import BigCta from "@/components/BigCta";
 import TopForm from "@/components/TopForm";
 import ContactForm from "@/components/ContactForm";
+import useScrambleOnClick from "@/hooks/useScrambleOnClick";
 
 const projects = [
   {
@@ -240,6 +241,7 @@ const Footer = () => (
 
 const Index = () => {
   useReveal();
+  useScrambleOnClick();
   const ref = useRef<HTMLDivElement>(null);
   return (
     <div ref={ref} className="bg-background text-foreground min-h-screen">
