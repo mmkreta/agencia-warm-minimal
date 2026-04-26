@@ -7,7 +7,7 @@ const steps = [
 ];
 
 const Process = () => (
-  <section id="proces" className="px-6 md:px-10 py-32 md:py-48" style={{ backgroundColor: "hsl(40 20% 96%)", color: "hsl(0 0% 8%)" }}>
+  <section id="proces" className="px-6 md:px-10 py-32 md:py-48" style={{ backgroundColor: "var(--page-bg)", color: "var(--page-fg)" }}>
     <div className="max-w-[1200px] mx-auto">
       <div className="mb-16">
         <p className="reveal uppercase text-xs tracking-[0.2em] text-[hsl(0_0%_8%/0.55)] mb-6">Proces</p>

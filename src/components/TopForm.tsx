@@ -4,7 +4,7 @@ const TopForm = () => (
   <section
     id="dohodnut"
     className="px-6 md:px-12 pt-6 pb-16 md:pt-8 md:pb-24"
-    style={{ backgroundColor: "hsl(40 20% 96%)", color: "hsl(0 0% 8%)" }}
+    style={{ backgroundColor: "var(--page-bg)", color: "var(--page-fg)" }}
   >
     <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-14 md:gap-24 items-stretch">
       {/* Vizuál — rovnaký štýl ako v hero */}
