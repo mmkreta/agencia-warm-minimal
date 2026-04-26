@@ -4,6 +4,7 @@ import Testimonial from "@/components/Testimonial";
 import BigCta from "@/components/BigCta";
 import TopForm from "@/components/TopForm";
 import ContactForm from "@/components/ContactForm";
+import ScrollRevealText from "@/components/ScrollRevealText";
 import useScrambleOnClick from "@/hooks/useScrambleOnClick";
 
 const projects = [
@@ -247,6 +248,7 @@ const Index = () => {
     <div ref={ref} className="bg-background text-foreground min-h-screen">
       <main>
         <Hero />
+        <ScrollRevealText />
         <TopForm />
         <Projects />
         <Services />
