@@ -42,16 +42,22 @@ const ScrollRevealText = () => {
 
   return (
     <section
-      className="px-6 md:px-10 py-32 md:py-48"
+      className="px-6 md:px-10 py-20 md:py-28"
       style={{ backgroundColor: "#0a0a0a" }}
     >
       <div ref={wrapRef} className="max-w-[1600px] mx-auto">
-        <p className="uppercase text-[10px] tracking-[0.25em] mb-10 text-[hsl(0_0%_45%)]">
+        <p
+          className="uppercase text-[10px] tracking-[0.25em] mb-8 text-[hsl(0_0%_45%)]"
+          style={{ fontFamily: "'Space Mono', monospace" }}
+        >
           O nás
         </p>
         <h2
-          className="font-normal leading-[1.05] tracking-[-0.02em]"
-          style={{ fontSize: "clamp(2.2rem, 6.5vw, 6rem)" }}
+          className="font-light leading-[1.15] tracking-[-0.03em]"
+          style={{
+            fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+            fontSize: "clamp(1.8rem, 4.5vw, 4rem)",
+          }}
         >
           {LINES.map((line, i) => (
             <span
