@@ -13,9 +13,11 @@ const ScrollRevealText = () => {
       const spans = wrap.querySelectorAll<HTMLSpanElement>("[data-word]");
       const vh = window.innerHeight;
       const rect = wrap.getBoundingClientRect();
-      // Section progress: 0 when section bottom enters viewport, 1 when section top hits ~30% from top
-      const total = rect.height + vh * 0.5;
-      const passed = vh - rect.top;
+      // Start earlier: begin revealing while the section is still ~30% below the viewport,
+      // and finish sooner so the text is fully visible before reaching the top.
+      const startOffset = vh * 0.3; // pre-trigger before section enters
+      const total = rect.height * 0.6; // shorter scroll distance to complete
+      const passed = vh - rect.top + startOffset;
       const sectionProgress = Math.min(1, Math.max(0, passed / total));
       const count = spans.length;
       spans.forEach((span, i) => {
