@@ -113,6 +113,7 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
+    transition: filter 0.6s ease;
   }
 
   /* When dark mode is active (full-page invert), keep media looking natural */
