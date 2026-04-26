@@ -68,7 +68,7 @@ function useReveal() {
 
 const Nav = () => (
   <header className="absolute top-0 left-0 right-0 z-50">
-    <nav className="px-6 md:px-10 h-12 flex items-center justify-between text-[11px] uppercase tracking-[0.18em]">
+    <nav className="px-6 md:px-10 h-9 flex items-center justify-between text-[11px] uppercase tracking-[0.18em]">
       <a href="#top" className="font-medium">AGENCIA</a>
       <ul className="hidden md:flex items-center gap-10 text-foreground/80">
         <li><a href="#projekty" className="hover:text-foreground transition-colors">Projekty</a></li>
@@ -84,7 +84,7 @@ const Nav = () => (
 );
 
 const Hero = () => (
-  <section id="top" className="relative min-h-screen flex flex-col px-6 md:px-10 pt-16 pb-10" style={{ backgroundColor: "#0a0a0a" }}>
+  <section id="top" className="relative min-h-screen flex flex-col px-6 md:px-10 pt-10 pb-10" style={{ backgroundColor: "#0a0a0a" }}>
     <Nav />
     <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mt-0">
       <div className="md:col-span-5 relative aspect-[3/4] md:aspect-auto overflow-hidden animate-[fadeIn_1s_ease-out]">
