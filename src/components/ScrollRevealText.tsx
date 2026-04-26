@@ -1,12 +1,8 @@
 import { useEffect, useRef } from "react";
 
 const LINES = [
-  "Tvoríme značky,",
-  "weby a softvér,",
-  "ktoré posúvajú",
-  "ambiciózne firmy",
-  "vpred — bez",
-  "kompromisov.",
+  "Staviame prémiové weby a softvér,",
+  "do ktorých sa zákazníci zamilujú.",
 ];
 
 const ScrollRevealText = () => {
@@ -53,10 +49,10 @@ const ScrollRevealText = () => {
           O nás
         </p>
         <h2
-          className="font-light leading-[1.15] tracking-[-0.03em]"
+          className="font-bold leading-[1.1] tracking-[-0.02em]"
           style={{
-            fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-            fontSize: "clamp(1.8rem, 4.5vw, 4rem)",
+            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+            fontSize: "clamp(1.8rem, 4.5vw, 3.6rem)",
           }}
         >
           {LINES.map((line, i) => (
