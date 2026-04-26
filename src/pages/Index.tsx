@@ -114,15 +114,6 @@ const Hero = () => (
       </div>
     </div>
 
-    {/* Badge */}
-    <div className="absolute left-6 md:left-10 bottom-8 flex items-center gap-3 animate-[fadeIn_1.6s_ease-out]">
-      <span
-        className="inline-flex items-center px-3 py-1.5 text-[10px] uppercase tracking-[0.2em] font-medium text-background"
-        style={{ backgroundColor: "hsl(var(--brand-accent))" }}
-      >
-        Voľná kapacita: 3 miesta
-      </span>
-    </div>
     <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: translateY(0) } }`}</style>
   </section>
 );
