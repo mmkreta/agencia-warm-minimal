@@ -1,9 +1,7 @@
 import { useEffect, useRef } from "react";
 
-const LINES = [
-  "Staviame prémiové weby a softvér,",
-  "do ktorých sa zákazníci zamilujú.",
-];
+const TEXT =
+  "Staviame prémiové weby a softvér, do ktorých sa zákazníci zamilujú.";
 
 const ScrollRevealText = () => {
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -12,17 +10,15 @@ const ScrollRevealText = () => {
     const onScroll = () => {
       const wrap = wrapRef.current;
       if (!wrap) return;
-      const spans = wrap.querySelectorAll<HTMLSpanElement>("[data-line]");
+      const spans = wrap.querySelectorAll<HTMLSpanElement>("[data-word]");
       const vh = window.innerHeight;
       spans.forEach((span) => {
         const r = span.getBoundingClientRect();
         const center = r.top + r.height / 2;
-        // 0 when line is at bottom of viewport, 1 when at ~40% from top
         const progress = Math.min(
           1,
           Math.max(0, (vh - center) / (vh * 0.6))
         );
-        // grey -> white
         const lightness = 25 + progress * 75; // 25% -> 100%
         span.style.color = `hsl(0 0% ${lightness}%)`;
       });
@@ -55,14 +51,14 @@ const ScrollRevealText = () => {
             fontSize: "clamp(1.8rem, 4.5vw, 3.6rem)",
           }}
         >
-          {LINES.map((line, i) => (
+          {TEXT.split(" ").map((word, i) => (
             <span
               key={i}
-              data-line
-              className="block transition-colors duration-300"
+              data-word
+              className="inline-block transition-colors duration-200 mr-[0.25em]"
               style={{ color: "hsl(0 0% 25%)" }}
             >
-              {line}
+              {word}
             </span>
           ))}
         </h2>
