@@ -41,7 +41,7 @@ const ScrollRevealText = () => {
   return (
     <section
       className="px-6 md:px-10 py-20 md:py-28"
-      style={{ backgroundColor: "var(--page-bg)" }}
+      style={{ backgroundColor: "var(--page-bg)", color: "var(--page-fg)" }}
     >
       <div ref={wrapRef} className="max-w-[1600px] mx-auto">
         <p
@@ -62,7 +62,7 @@ const ScrollRevealText = () => {
               key={i}
               data-word
               className="inline-block transition-opacity duration-150 mr-[0.25em]"
-              style={{ opacity: 0.2, color: "hsl(0 0% 100%)" }}
+              style={{ opacity: 0.2, color: "currentColor" }}
             >
               {word}
             </span>
