@@ -20,15 +20,14 @@ export const ThemeToggle = () => {
   const [mode, setMode] = useState<Mode>("dark");
 
   useEffect(() => {
-    const saved = (localStorage.getItem(STORAGE_KEY) as Mode) || "dark";
-    setMode(saved);
-    applyTheme(saved);
+    localStorage.removeItem(STORAGE_KEY);
+    setMode("dark");
+    applyTheme("dark");
   }, []);
 
   const toggle = () => {
     const next: Mode = mode === "dark" ? "light" : "dark";
     setMode(next);
-    localStorage.setItem(STORAGE_KEY, next);
     applyTheme(next);
   };
 
