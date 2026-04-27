@@ -33,6 +33,9 @@
           var root = document.documentElement;
           root.dataset.theme = mode;
           if (mode === 'dark') {
+            root.style.background = '#0a0a0a';
+            root.style.filter = '';
+          } else {
             root.style.filter = 'invert(1) hue-rotate(180deg)';
             root.style.background = '#fff';
           }
