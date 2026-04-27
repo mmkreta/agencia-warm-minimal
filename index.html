@@ -28,17 +28,12 @@
     <script>
       (function () {
         try {
-          var saved = localStorage.getItem('theme-mode');
-          var mode = saved === 'light' ? 'light' : 'dark';
+          localStorage.removeItem('theme-mode');
+          var mode = 'dark';
           var root = document.documentElement;
           root.dataset.theme = mode;
-          if (mode === 'dark') {
-            root.style.background = '#0a0a0a';
-            root.style.filter = '';
-          } else {
-            root.style.filter = 'invert(1) hue-rotate(180deg)';
-            root.style.background = '#fff';
-          }
+          root.style.background = '#0a0a0a';
+          root.style.filter = '';
         } catch (e) {}
       })();
     </script>
