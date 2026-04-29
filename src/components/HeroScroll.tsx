@@ -127,7 +127,7 @@ const HeroScroll = () => {
         {/* scroll-driven scramble headline */}
         <div
           className="absolute left-0 right-0 flex justify-center px-6 pointer-events-none"
-          style={{ top: "62%", opacity: scrambleOpacity }}
+          style={{ top: "42%", opacity: scrambleOpacity }}
         >
           <span
             className="uppercase text-white text-2xl md:text-4xl lg:text-5xl tracking-[0.28em] font-medium whitespace-nowrap"
