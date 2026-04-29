@@ -9,6 +9,7 @@ import useScrambleOnClick from "@/hooks/useScrambleOnClick";
 import ScrollRevealText from "@/components/ScrollRevealText";
 import HeroScroll from "@/components/HeroScroll";
 import Highlights from "@/components/Highlights";
+import CloserLook from "@/components/CloserLook";
 
 const projects = [
   {
@@ -224,6 +225,7 @@ const Index = () => {
         <Hero />
         <ScrollRevealText />
         <Highlights />
+        <CloserLook />
         <TopForm />
         <Projects />
         <Services />
