@@ -6,7 +6,7 @@ import TopForm from "@/components/TopForm";
 import ContactForm from "@/components/ContactForm";
 import ThemeToggle from "@/components/ThemeToggle";
 import useScrambleOnClick from "@/hooks/useScrambleOnClick";
-import ScrollRevealText from "@/components/ScrollRevealText";
+
 import HeroScroll from "@/components/HeroScroll";
 import Highlights from "@/components/Highlights";
 import CloserLook from "@/components/CloserLook";
@@ -223,7 +223,6 @@ const Index = () => {
     <div ref={ref} className="bg-background text-foreground min-h-screen">
       <main>
         <Hero />
-        <ScrollRevealText />
         <Highlights />
         <CloserLook />
         <TopForm />
