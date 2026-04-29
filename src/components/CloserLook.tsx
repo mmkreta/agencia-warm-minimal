@@ -95,6 +95,7 @@ const Laptop = ({ progress }: { progress: number }) => {
 const CloserLook = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
+  const [activeFeature, setActiveFeature] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -118,75 +119,99 @@ const CloserLook = () => {
   // text reveal windows
   const win = (a: number, b: number) =>
     Math.min(1, Math.max(0, (progress - a) / (b - a)));
-  const titleIn = win(0.05, 0.25);
-  const bullet1 = win(0.25, 0.45);
-  const bullet2 = win(0.45, 0.65);
-  const bullet3 = win(0.65, 0.85);
+  const titleIn = win(0.0, 0.18);
+  const featuresIn = win(0.1, 0.3);
+
+  const features = [
+    { id: "strategy", label: "Stratégia" },
+    { id: "design", label: "Dizajn" },
+    { id: "code", label: "Kód" },
+    { id: "performance", label: "Performance" },
+    { id: "seo", label: "SEO" },
+    { id: "support", label: "Podpora" },
+  ];
 
   return (
     <section
       ref={sectionRef}
       id="closer-look"
-      style={{ height: "260vh", backgroundColor: "#0a0a0a" }}
+      style={{ height: "220vh", backgroundColor: "#000" }}
       className="relative text-white"
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* subtle radial backdrop */}
+        {/* subtle radial backdrop behind product */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(60% 50% at 70% 50%, rgba(70,90,120,0.25) 0%, rgba(10,10,10,0) 70%)",
+              "radial-gradient(55% 55% at 70% 55%, rgba(80,100,140,0.22) 0%, rgba(0,0,0,0) 70%)",
           }}
         />
 
-        <div className="relative h-full max-w-[1400px] mx-auto grid md:grid-cols-2 items-center gap-8 px-6 md:px-12">
-          {/* Left: copy */}
-          <div className="relative z-10 max-w-[520px]">
-            <p
-              className="uppercase text-[10px] tracking-[0.3em] text-white/55 mb-6"
-              style={{ opacity: titleIn, transform: `translateY(${(1 - titleIn) * 12}px)` }}
-            >
-              Pozrite sa zblízka
-            </p>
-            <h2
-              className="font-semibold leading-[1.02] tracking-[-0.02em]"
-              style={{
-                fontSize: "clamp(2.25rem, 5vw, 4.25rem)",
-                opacity: titleIn,
-                transform: `translateY(${(1 - titleIn) * 24}px)`,
-                transition: "opacity 200ms linear",
-              }}
-            >
-              Postavené do detailu.
-            </h2>
+        {/* Headline — top left, Apple-style */}
+        <div className="absolute top-[6vh] md:top-[8vh] left-0 right-0 z-20 px-6 md:px-16 lg:px-24">
+          <h2
+            className="font-semibold leading-[0.95] tracking-[-0.035em]"
+            style={{
+              fontSize: "clamp(2.5rem, 7.5vw, 6.5rem)",
+              opacity: titleIn,
+              transform: `translateY(${(1 - titleIn) * 24}px)`,
+              transition: "opacity 200ms linear",
+            }}
+          >
+            Pozrite sa zblízka.
+          </h2>
+        </div>
 
-            <ul className="mt-10 space-y-6 text-white/80 text-[15px] md:text-[17px] leading-relaxed">
-              {[
-                { t: bullet1, label: "Stratégia, dizajn a kód pod jednou strechou." },
-                { t: bullet2, label: "Performance audit pred každým launchom." },
-                { t: bullet3, label: "Žiadne šablóny — všetko šité na mieru." },
-              ].map((b, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-4"
-                  style={{
-                    opacity: b.t,
-                    transform: `translateY(${(1 - b.t) * 18}px)`,
-                  }}
+        {/* Feature pills — bottom left column */}
+        <div
+          className="absolute left-6 md:left-16 lg:left-24 bottom-[8vh] z-20 flex flex-col gap-3 md:gap-3.5"
+          style={{
+            opacity: featuresIn,
+            transform: `translateY(${(1 - featuresIn) * 16}px)`,
+          }}
+        >
+          {features.map((f) => {
+            const isActive = activeFeature === f.id;
+            return (
+              <button
+                key={f.id}
+                onClick={() => setActiveFeature(isActive ? null : f.id)}
+                className={`group flex items-center gap-3 pl-2 pr-5 py-2 rounded-full border transition-all duration-300 ${
+                  isActive
+                    ? "bg-white text-black border-white"
+                    : "bg-white/[0.04] text-white border-white/20 hover:bg-white/10 hover:border-white/40"
+                }`}
+              >
+                <span
+                  className={`flex items-center justify-center w-7 h-7 rounded-full border transition-all ${
+                    isActive
+                      ? "border-black/30 rotate-45"
+                      : "border-white/40 group-hover:border-white/70"
+                  }`}
                 >
-                  <span className="mt-2 size-1.5 rounded-full bg-white/70 shrink-0" />
-                  <span>{b.label}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                    <path
+                      d="M5.5 1V10M1 5.5H10"
+                      stroke="currentColor"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+                <span className="text-[14px] md:text-[15px] font-medium tracking-tight">
+                  {f.label}
+                </span>
+              </button>
+            );
+          })}
+        </div>
 
-          {/* Right: 3D canvas */}
-          <div className="absolute md:relative inset-0 md:inset-auto h-full w-full md:h-[80vh]">
+        {/* 3D canvas — fills the right side */}
+        <div className="absolute inset-0 md:left-[38%]">
             <Canvas
               shadows
-              camera={{ position: [0, 1.6, 5.2], fov: 35 }}
+              camera={{ position: [0, 1.4, 4.8], fov: 32 }}
               dpr={[1, 2]}
               gl={{ antialias: true, alpha: true }}
             >
@@ -211,7 +236,6 @@ const CloserLook = () => {
                 <Environment preset="city" />
               </Suspense>
             </Canvas>
-          </div>
         </div>
 
         {/* scroll progress bar */}
