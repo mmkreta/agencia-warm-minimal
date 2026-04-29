@@ -130,8 +130,11 @@ const HeroScroll = () => {
           style={{ top: "42%", opacity: scrambleOpacity }}
         >
           <span
-            className="uppercase text-white text-2xl md:text-4xl lg:text-5xl tracking-[0.28em] font-medium whitespace-nowrap"
-            style={{ fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
+            className="uppercase text-2xl md:text-4xl lg:text-5xl tracking-[0.28em] font-medium whitespace-nowrap"
+            style={{
+              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+              color: "#000",
+            }}
           >
             <ScrollScramble text="SOFTVÉR. AI. MARKETING." progress={scrambleProgress} />
           </span>
