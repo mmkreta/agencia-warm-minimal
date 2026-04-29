@@ -1,5 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 
+const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*<>/=+-?";
+
+/** Scroll-driven scramble: reveals letters one-by-one based on progress (0..1). */
+const ScrollScramble = ({ text, progress }: { text: string; progress: number }) => {
+  const p = Math.min(1, Math.max(0, progress));
+  const revealCount = Math.floor(p * text.length);
+  let out = "";
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (i < revealCount || ch === " " || ch === "." ) {
+      out += ch;
+    } else {
+      // deterministic-ish noise that changes with progress for a "ticking" feel
+      const seed = Math.floor(p * 60) + i;
+      out += SCRAMBLE_CHARS[seed % SCRAMBLE_CHARS.length];
+    }
+  }
+  return <>{out}</>;
+};
+
 /**
  * Full-bleed hero with scroll-scrubbed video.
  * - Section is tall (300vh) so user must scroll through it.
@@ -61,6 +81,10 @@ const HeroScroll = () => {
 
   const hintOpacity = 1 - win(0.0, 0.12);
 
+  // scramble text appears between 15% and 70% of scroll progress
+  const scrambleProgress = win(0.15, 0.7);
+  const scrambleOpacity = Math.min(1, win(0.1, 0.25));
+
   // signature path length (approx) — large enough; we'll use pathLength=1
   return (
     <div ref={sectionRef} style={{ height: "175vh" }} className="relative">
@@ -73,6 +97,19 @@ const HeroScroll = () => {
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
         />
+
+        {/* scroll-driven scramble headline at ~75% from top (3/4 from bottom feel) */}
+        <div
+          className="absolute left-0 right-0 flex justify-center pointer-events-none"
+          style={{ top: "75%", opacity: scrambleOpacity }}
+        >
+          <span
+            className="uppercase text-white text-[13px] md:text-[15px] tracking-[0.32em] font-medium"
+            style={{ fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
+          >
+            <ScrollScramble text="SOFTVÉR. AI. MARKETING." progress={scrambleProgress} />
+          </span>
+        </div>
 
         {/* bottom hint: potiahnite + arrow inline */}
         <div
