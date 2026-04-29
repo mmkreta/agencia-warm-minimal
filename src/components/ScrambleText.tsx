@@ -65,7 +65,7 @@ export const ScrambleText = ({
   };
 
   return (
-    <Tag className={className} onMouseEnter={handleEnter} onClick={scramble}>
+    <Tag className={className} onMouseEnter={handleEnter as any} onClick={scramble as any}>
       {text}
     </Tag>
   );
