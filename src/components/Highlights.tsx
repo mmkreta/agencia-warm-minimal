@@ -1,16 +1,36 @@
 import { useEffect, useRef, useState } from "react";
-import weby from "@/assets/highlight-weby.jpg";
-import softver from "@/assets/highlight-softver.jpg";
-import ai from "@/assets/highlight-ai.jpg";
-import marketing from "@/assets/highlight-marketing.jpg";
-import branding from "@/assets/highlight-branding.jpg";
 
 const slides = [
-  { img: weby, eyebrow: "01 — Weby", title: "Weby, ktoré predávajú.", desc: "Moderný web ladený na konverziu — od prvého dojmu po klik." },
-  { img: softver, eyebrow: "02 — Softvér", title: "Softvér na mieru.", desc: "CRM, dashboardy a interné nástroje, ktoré šetria hodiny denne." },
-  { img: ai, eyebrow: "03 — AI", title: "AI, ktorá pracuje za vás.", desc: "Automatizácie, agenti a chatboty napojené priamo na váš biznis." },
-  { img: marketing, eyebrow: "04 — Marketing", title: "Kampane s výsledkom.", desc: "Meta, Google, SEO. Transparentne, merateľne, bez výhovoriek." },
-  { img: branding, eyebrow: "05 — Branding", title: "Značka, ktorú si pamätajú.", desc: "Identita, ktorá otvára dvere ešte predtým než poviete slovo." },
+  {
+    bg: "radial-gradient(120% 80% at 80% 20%, #2a2a2a 0%, #0a0a0a 60%), linear-gradient(135deg, #1a1a1a, #050505)",
+    eyebrow: "01 — Weby",
+    title: "Weby, ktoré predávajú.",
+    desc: "Moderný web ladený na konverziu — od prvého dojmu po klik.",
+  },
+  {
+    bg: "radial-gradient(120% 80% at 20% 30%, #1f2937 0%, #050a14 65%), linear-gradient(135deg, #0f172a, #000)",
+    eyebrow: "02 — Softvér",
+    title: "Softvér na mieru.",
+    desc: "CRM, dashboardy a interné nástroje, ktoré šetria hodiny denne.",
+  },
+  {
+    bg: "radial-gradient(120% 80% at 70% 70%, #1c2b2a 0%, #050a09 65%), linear-gradient(135deg, #0a1413, #000)",
+    eyebrow: "03 — AI",
+    title: "AI, ktorá pracuje za vás.",
+    desc: "Automatizácie, agenti a chatboty napojené priamo na váš biznis.",
+  },
+  {
+    bg: "radial-gradient(120% 80% at 30% 80%, #2b2418 0%, #0a0805 65%), linear-gradient(135deg, #1a1610, #000)",
+    eyebrow: "04 — Marketing",
+    title: "Kampane s výsledkom.",
+    desc: "Meta, Google, SEO. Transparentne, merateľne, bez výhovoriek.",
+  },
+  {
+    bg: "radial-gradient(120% 80% at 60% 40%, #2a2028 0%, #0a070a 65%), linear-gradient(135deg, #18121a, #000)",
+    eyebrow: "05 — Branding",
+    title: "Značka, ktorú si pamätajú.",
+    desc: "Identita, ktorá otvára dvere ešte predtým než poviete slovo.",
+  },
 ];
 
 const AUTOPLAY_MS = 5000;
@@ -83,14 +103,20 @@ const Highlights = () => {
                 style={{ opacity: i === index ? 1 : 0 }}
                 aria-hidden={i !== index}
               >
-                <img
-                  src={s.img}
-                  alt={s.title}
-                  loading="lazy"
-                  width={1280}
-                  height={1600}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[6000ms] ease-out"
-                  style={{ transform: i === index ? "scale(1.06)" : "scale(1)" }}
+                <div
+                  className="absolute inset-0 transition-transform duration-[6000ms] ease-out"
+                  style={{
+                    background: s.bg,
+                    transform: i === index ? "scale(1.06)" : "scale(1)",
+                  }}
+                />
+                <div
+                  className="absolute inset-0 opacity-[0.07] mix-blend-overlay pointer-events-none"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
+                    backgroundSize: "3px 3px",
+                  }}
                 />
                 <div
                   className="absolute inset-0"
