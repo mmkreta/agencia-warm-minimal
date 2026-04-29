@@ -4,10 +4,10 @@ import Testimonial from "@/components/Testimonial";
 import BigCta from "@/components/BigCta";
 import TopForm from "@/components/TopForm";
 import ContactForm from "@/components/ContactForm";
-import ScrollRevealText from "@/components/ScrollRevealText";
 import ThemeToggle from "@/components/ThemeToggle";
 import useScrambleOnClick from "@/hooks/useScrambleOnClick";
-import heroWorkspace from "@/assets/hero-sunset.jpg";
+import ScrollRevealText from "@/components/ScrollRevealText";
+import HeroScroll from "@/components/HeroScroll";
 
 const projects = [
   {
@@ -91,18 +91,9 @@ const Nav = () => (
 );
 
 const Hero = () => (
-  <section id="top" className="relative min-h-screen flex flex-col px-6 md:px-10 pt-10 pb-10" style={{ backgroundColor: "var(--page-bg)" }}>
+  <section id="top" className="relative" style={{ backgroundColor: "var(--page-bg)" }}>
     <Nav />
-    <div className="flex-1 relative overflow-hidden mt-0 animate-[fadeIn_1s_ease-out]">
-      <img
-        src={heroWorkspace}
-        alt="Workspace s notebookom pri okne s výhľadom na západ slnka nad mestom"
-        className="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-      />
-    </div>
-
-    <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: translateY(0) } }`}</style>
+    <HeroScroll />
   </section>
 );
 
