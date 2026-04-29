@@ -8,7 +8,6 @@ import ScrollRevealText from "@/components/ScrollRevealText";
 import ThemeToggle from "@/components/ThemeToggle";
 import useScrambleOnClick from "@/hooks/useScrambleOnClick";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
-import heroLoop from "@/assets/hero-loop.jpg";
 
 const projects = [
   {
