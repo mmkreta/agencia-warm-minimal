@@ -91,9 +91,11 @@ const Nav = () => (
 );
 
 const Hero = () => (
-  <section id="top" className="relative" style={{ backgroundColor: "var(--page-bg)" }}>
+  <section id="top" className="relative bg-black">
     <Nav />
-    <HeroScroll />
+    <div className="-mt-px">
+      <HeroScroll />
+    </div>
   </section>
 );
 
