@@ -7,7 +7,7 @@ import ContactForm from "@/components/ContactForm";
 import ScrollRevealText from "@/components/ScrollRevealText";
 import ThemeToggle from "@/components/ThemeToggle";
 import useScrambleOnClick from "@/hooks/useScrambleOnClick";
-import heroWorkspace from "@/assets/hero-workspace.jpg";
+import heroWorkspace from "@/assets/hero-sunset.jpg";
 
 const projects = [
   {
@@ -93,25 +93,13 @@ const Nav = () => (
 const Hero = () => (
   <section id="top" className="relative min-h-screen flex flex-col px-6 md:px-10 pt-10 pb-10" style={{ backgroundColor: "var(--page-bg)" }}>
     <Nav />
-    <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mt-0">
-      <div className="md:col-span-5 relative aspect-[3/4] md:aspect-auto overflow-hidden animate-[fadeIn_1s_ease-out]">
-        <img
-          src={heroWorkspace}
-          alt="Workspace s notebookom a tabletom v modernom interiéri s výhľadom na hory"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
-        />
-      </div>
-      <div className="md:col-span-7 relative aspect-[16/10] md:aspect-auto overflow-hidden animate-[fadeIn_1.3s_ease-out]">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(135deg, #1f1f1f 0%, #141414 50%, #0a0a0a 100%)",
-          }}
-        />
-        <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: "radial-gradient(circle at 70% 60%, #fff 0%, transparent 60%)" }} />
-      </div>
+    <div className="flex-1 relative overflow-hidden mt-0 animate-[fadeIn_1s_ease-out]">
+      <img
+        src={heroWorkspace}
+        alt="Workspace s notebookom pri okne s výhľadom na západ slnka nad mestom"
+        className="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+      />
     </div>
 
     <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: translateY(0) } }`}</style>
