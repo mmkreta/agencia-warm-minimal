@@ -11,6 +11,7 @@ import HeroScroll from "@/components/HeroScroll";
 import Highlights from "@/components/Highlights";
 import CloserLook from "@/components/CloserLook";
 import ProductShowcase from "@/components/ProductShowcase";
+import PerformanceHero from "@/components/PerformanceHero";
 
 const projects = [
   {
@@ -229,6 +230,7 @@ const Index = () => {
         <CloserLook />
         <TopForm />
         <ProductShowcase />
+        <PerformanceHero />
         <Projects />
         <Services />
         <Process />
