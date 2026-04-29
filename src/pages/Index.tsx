@@ -71,28 +71,27 @@ function useReveal() {
 }
 
 const Nav = () => (
-  <header className="absolute top-0 left-0 right-0 z-50">
+  <header className="fixed top-0 left-0 right-0 z-[100] mix-blend-difference text-white">
     <nav className="px-6 md:px-10 h-9 flex items-center justify-between text-[11px] uppercase tracking-[0.18em]">
       <div className="flex items-center gap-4">
         <ThemeToggle />
         <a href="#top" className="font-medium">AGENCIA</a>
       </div>
-      <ul className="hidden md:flex items-center gap-10 text-foreground/80">
-        <li><a href="#sluzby" className="hover:text-foreground transition-colors">Softvér</a></li>
-        <li><a href="#projekty" className="hover:text-foreground transition-colors">Weby</a></li>
+      <ul className="hidden md:flex items-center gap-10 text-white/80">
+        <li><a href="#sluzby" className="hover:text-white transition-colors">Softvér</a></li>
+        <li><a href="#projekty" className="hover:text-white transition-colors">Weby</a></li>
       </ul>
-      <ul className="hidden md:flex items-center gap-10 text-foreground/80">
-        <li><a href="#sluzby" className="hover:text-foreground transition-colors">Marketing</a></li>
-        <li><a href="#sluzby" className="hover:text-foreground transition-colors">AI</a></li>
+      <ul className="hidden md:flex items-center gap-10 text-white/80">
+        <li><a href="#sluzby" className="hover:text-white transition-colors">Marketing</a></li>
+        <li><a href="#sluzby" className="hover:text-white transition-colors">AI</a></li>
       </ul>
-      <a href="#kontakt" className="hover:text-foreground transition-colors">Kontakt</a>
+      <a href="#kontakt" className="hover:text-white transition-colors">Kontakt</a>
     </nav>
   </header>
 );
 
 const Hero = () => (
   <section id="top" className="relative" style={{ backgroundColor: "var(--page-bg)" }}>
-    <Nav />
     <HeroScroll />
   </section>
 );
@@ -219,6 +218,7 @@ const Index = () => {
   const ref = useRef<HTMLDivElement>(null);
   return (
     <div ref={ref} className="bg-background text-foreground min-h-screen">
+      <Nav />
       <main>
         <Hero />
         <ScrollRevealText />
