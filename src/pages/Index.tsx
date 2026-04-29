@@ -8,6 +8,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import useScrambleOnClick from "@/hooks/useScrambleOnClick";
 import ScrollRevealText from "@/components/ScrollRevealText";
 import HeroScroll from "@/components/HeroScroll";
+import Highlights from "@/components/Highlights";
 
 const projects = [
   {
@@ -222,6 +223,7 @@ const Index = () => {
       <main>
         <Hero />
         <ScrollRevealText />
+        <Highlights />
         <TopForm />
         <Projects />
         <Services />
