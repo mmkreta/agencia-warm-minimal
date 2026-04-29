@@ -8,7 +8,6 @@ import ScrollRevealText from "@/components/ScrollRevealText";
 import ThemeToggle from "@/components/ThemeToggle";
 import useScrambleOnClick from "@/hooks/useScrambleOnClick";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
-import heroLoop from "@/assets/hero-loop.gif";
 
 const projects = [
   {
@@ -103,13 +102,15 @@ const Hero = () => (
           loading="eager"
         />
       </div>
-      <div className="md:col-span-7 relative aspect-[16/10] md:aspect-auto overflow-hidden animate-[fadeIn_1.3s_ease-out] bg-black">
-        <img
-          src={heroLoop}
-          alt="Animovaný glóbus z bodiek"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
+      <div className="md:col-span-7 relative aspect-[16/10] md:aspect-auto overflow-hidden animate-[fadeIn_1.3s_ease-out]">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, #1f1f1f 0%, #141414 50%, #0a0a0a 100%)",
+          }}
         />
+        <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: "radial-gradient(circle at 70% 60%, #fff 0%, transparent 60%)" }} />
       </div>
     </div>
 
