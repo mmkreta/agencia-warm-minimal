@@ -74,20 +74,20 @@ const HeroScroll = () => {
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        {/* bottom hint: potiahnite + arrow */}
+        {/* bottom hint: potiahnite + arrow inline */}
         <div
-          className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2 pointer-events-none"
+          className="absolute bottom-4 left-0 right-0 flex flex-row items-center justify-center gap-2 pointer-events-none"
           style={{ opacity: hintOpacity }}
         >
           <span
-            className="uppercase text-[10px] tracking-[0.35em] text-white/85"
+            className="uppercase text-[8px] tracking-[0.3em] text-white/85 leading-none"
             style={{ fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
           >
             Potiahnite
           </span>
           <svg
-            width="22"
-            height="34"
+            width="10"
+            height="14"
             viewBox="0 0 22 34"
             fill="none"
             className="animate-[heroBounce_1.6s_ease-in-out_infinite]"
@@ -95,7 +95,7 @@ const HeroScroll = () => {
             <path
               d="M11 2 L11 28 M2 19 L11 30 L20 19"
               stroke="white"
-              strokeWidth="2"
+              strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
