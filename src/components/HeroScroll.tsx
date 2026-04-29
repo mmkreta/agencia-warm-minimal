@@ -2,18 +2,44 @@ import { useEffect, useRef, useState } from "react";
 
 const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*<>/=+-?";
 
-/** Scroll-driven scramble: reveals letters one-by-one based on progress (0..1). */
+/**
+ * Scroll-driven scramble. Reveal pattern is irregular — some scroll steps
+ * resolve 1 letter, others resolve 2 — using a fixed pseudo-random schedule
+ * derived from the target text so each letter has its own reveal threshold.
+ */
 const ScrollScramble = ({ text, progress }: { text: string; progress: number }) => {
   const p = Math.min(1, Math.max(0, progress));
-  const revealCount = Math.floor(p * text.length);
+
+  // Build an irregular reveal schedule: thresholds in [0..1] per char,
+  // grouped so sometimes 1 letter resolves, sometimes 2 together.
+  // Stable per-text (no randomness on render).
+  const thresholds: number[] = [];
+  let cursor = 0;
+  let i = 0;
+  while (i < text.length) {
+    // group size 1 or 2 based on a deterministic pattern
+    const groupSize = ((i * 7 + 3) % 5 < 2) ? 2 : 1;
+    cursor += 1; // each group consumes one "tick"
+    for (let g = 0; g < groupSize && i < text.length; g++) {
+      thresholds.push(cursor);
+      i++;
+    }
+  }
+  const totalTicks = cursor;
+  // normalize thresholds to 0..1 reveal progress
+  const norm = thresholds.map((t) => t / totalTicks);
+
   let out = "";
-  for (let i = 0; i < text.length; i++) {
-    const ch = text[i];
-    if (i < revealCount || ch === " " || ch === "." ) {
+  for (let j = 0; j < text.length; j++) {
+    const ch = text[j];
+    if (ch === " " || ch === ".") {
+      out += ch;
+      continue;
+    }
+    if (p >= norm[j]) {
       out += ch;
     } else {
-      // deterministic-ish noise that changes with progress for a "ticking" feel
-      const seed = Math.floor(p * 60) + i;
+      const seed = Math.floor(p * 80) + j * 3;
       out += SCRAMBLE_CHARS[seed % SCRAMBLE_CHARS.length];
     }
   }
@@ -98,13 +124,13 @@ const HeroScroll = () => {
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        {/* scroll-driven scramble headline at ~75% from top (3/4 from bottom feel) */}
+        {/* scroll-driven scramble headline */}
         <div
-          className="absolute left-0 right-0 flex justify-center pointer-events-none"
-          style={{ top: "75%", opacity: scrambleOpacity }}
+          className="absolute left-0 right-0 flex justify-center px-6 pointer-events-none"
+          style={{ top: "62%", opacity: scrambleOpacity }}
         >
           <span
-            className="uppercase text-white text-[13px] md:text-[15px] tracking-[0.32em] font-medium"
+            className="uppercase text-white text-2xl md:text-4xl lg:text-5xl tracking-[0.28em] font-medium whitespace-nowrap"
             style={{ fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
           >
             <ScrollScramble text="SOFTVÉR. AI. MARKETING." progress={scrambleProgress} />
