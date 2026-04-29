@@ -71,8 +71,8 @@ function useReveal() {
 }
 
 const Nav = () => (
-  <header className="absolute top-0 left-0 right-0 z-50 text-white">
-    <nav className="px-6 md:px-10 h-9 flex items-center justify-between text-[11px] uppercase tracking-[0.18em]">
+  <header className="fixed top-0 left-0 right-0 z-[100] text-white mix-blend-difference pointer-events-none">
+    <nav className="px-6 md:px-10 h-9 flex items-center justify-between text-[11px] uppercase tracking-[0.18em] pointer-events-auto">
       <div className="flex items-center gap-4">
         <ThemeToggle />
         <a href="#top" className="font-medium">AGENCIA</a>
