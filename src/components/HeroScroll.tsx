@@ -63,7 +63,7 @@ const HeroScroll = () => {
 
   // signature path length (approx) — large enough; we'll use pathLength=1
   return (
-    <div ref={sectionRef} style={{ height: "300vh" }} className="relative">
+    <div ref={sectionRef} style={{ height: "175vh" }} className="relative">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <video
           ref={videoRef}
