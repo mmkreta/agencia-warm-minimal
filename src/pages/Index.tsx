@@ -71,7 +71,7 @@ function useReveal() {
 }
 
 const Nav = () => (
-  <header className="relative z-50 bg-black text-white">
+  <header className="absolute top-0 left-0 right-0 z-50 text-white">
     <nav className="px-6 md:px-10 h-9 flex items-center justify-between text-[11px] uppercase tracking-[0.18em]">
       <div className="flex items-center gap-4">
         <ThemeToggle />
@@ -93,9 +93,7 @@ const Nav = () => (
 const Hero = () => (
   <section id="top" className="relative bg-black">
     <Nav />
-    <div className="-mt-px">
-      <HeroScroll />
-    </div>
+    <HeroScroll />
   </section>
 );
 
