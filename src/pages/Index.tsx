@@ -10,6 +10,7 @@ import ScrollRevealText from "@/components/ScrollRevealText";
 import HeroScroll from "@/components/HeroScroll";
 import Highlights from "@/components/Highlights";
 import CloserLook from "@/components/CloserLook";
+import ProductShowcase from "@/components/ProductShowcase";
 
 const projects = [
   {
@@ -227,6 +228,7 @@ const Index = () => {
         <Highlights />
         <CloserLook />
         <TopForm />
+        <ProductShowcase />
         <Projects />
         <Services />
         <Process />
