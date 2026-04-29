@@ -73,14 +73,6 @@ const HeroScroll = () => {
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        {/* subtle vignette for legibility */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.45) 100%)",
-          }}
-        />
 
         {/* bottom hint: potiahnite + arrow */}
         <div
