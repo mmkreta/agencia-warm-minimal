@@ -30,16 +30,15 @@ const HeroScroll = () => {
       if (!sec) return;
       const rect = sec.getBoundingClientRect();
       const total = sec.offsetHeight - window.innerHeight;
+      // scroll progress through the pinned section (0..1)
       const scrolled = Math.min(total, Math.max(0, -rect.top));
       const p = total > 0 ? scrolled / total : 0;
       setProgress(p);
 
       const v = videoRef.current;
       if (v && duration > 0) {
-        // skip first 0.4s of source video
-        const start = 0.4;
-        const end = duration;
-        const t = start + p * (end - start);
+        // immediately scrub from frame 0 — no skipped intro
+        const t = p * duration;
         if (Math.abs(v.currentTime - t) > 0.03) {
           try {
             v.currentTime = t;
@@ -63,9 +62,14 @@ const HeroScroll = () => {
   const hintOpacity = 1 - win(0.0, 0.12);
 
   // signature path length (approx) — large enough; we'll use pathLength=1
+  // Nav header is 36px tall (h-9). Video locks under it and fills the rest.
+  const NAV_H = 36;
   return (
     <div ref={sectionRef} style={{ height: "300vh" }} className="relative">
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+      <div
+        className="sticky w-full overflow-hidden"
+        style={{ top: NAV_H, height: `calc(100vh - ${NAV_H}px)` }}
+      >
         <video
           ref={videoRef}
           src="/hero.mp4"
