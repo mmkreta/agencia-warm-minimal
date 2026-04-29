@@ -60,17 +60,7 @@ const HeroScroll = () => {
   const win = (a: number, b: number) =>
     Math.min(1, Math.max(0, (progress - a) / (b - a)));
 
-  const wordsIn = win(0.28, 0.5); // 3 words fade/slide in
-  const wordsOut = win(0.62, 0.78); // 3 words fade out
-  const wordsOpacity = wordsIn * (1 - wordsOut);
-
-  const sigStart = 0.55;
-  const sigEnd = 0.92;
-  const sigProgress = win(sigStart, sigEnd); // 0..1 stroke draw
-
   const hintOpacity = 1 - win(0.0, 0.12);
-
-  const words = ["Softvér", "AI", "Marketing"];
 
   // signature path length (approx) — large enough; we'll use pathLength=1
   return (
@@ -92,60 +82,6 @@ const HeroScroll = () => {
               "linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.45) 100%)",
           }}
         />
-
-        {/* center stack: three words */}
-        <div
-          className="absolute inset-0 flex flex-col items-center justify-center text-center px-6"
-          style={{ opacity: wordsOpacity }}
-        >
-          {words.map((w, i) => {
-            const local = Math.min(1, Math.max(0, wordsIn * 3 - i));
-            return (
-              <span
-                key={w}
-                className="block font-black tracking-[-0.04em] text-white"
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: "clamp(2.4rem, 8vw, 7rem)",
-                  lineHeight: 1.02,
-                  transform: `translateY(${(1 - local) * 24}px)`,
-                  opacity: local,
-                  textShadow: "0 4px 30px rgba(0,0,0,0.4)",
-                }}
-              >
-                {w}
-              </span>
-            );
-          })}
-
-          {/* handwritten signature under the words */}
-          <div
-            className="mt-6 md:mt-10"
-            style={{
-              opacity: Math.min(1, sigProgress * 2),
-            }}
-          >
-            <svg
-              viewBox="0 0 600 160"
-              className="w-[280px] md:w-[460px] h-auto"
-              fill="none"
-            >
-              <path
-                d="M30 110 C 60 30, 110 30, 120 100 C 130 150, 90 150, 95 110 C 100 60, 150 50, 175 95 L 185 60 L 200 110 C 210 70, 245 70, 245 110 C 245 140, 215 140, 220 110 C 225 75, 265 75, 280 110 C 285 130, 270 140, 265 120 L 295 60 L 295 115 C 295 80, 325 70, 345 100 L 355 60 L 365 110 C 375 70, 410 70, 410 110 C 410 140, 380 140, 385 110 C 390 75, 430 75, 445 115 C 455 140, 425 140, 430 110 L 460 60 C 470 110, 510 110, 525 75"
-                stroke="white"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                pathLength={1}
-                strokeDasharray={1}
-                strokeDashoffset={1 - sigProgress}
-                style={{
-                  filter: "drop-shadow(0 2px 12px rgba(0,0,0,0.5))",
-                }}
-              />
-            </svg>
-          </div>
-        </div>
 
         {/* bottom hint: potiahnite + arrow */}
         <div
