@@ -8,7 +8,6 @@ import ScrollRevealText from "@/components/ScrollRevealText";
 import ThemeToggle from "@/components/ThemeToggle";
 import useScrambleOnClick from "@/hooks/useScrambleOnClick";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
-import heroLoop from "@/assets/hero-loop.jpg";
 
 const projects = [
   {
@@ -103,13 +102,20 @@ const Hero = () => (
           loading="eager"
         />
       </div>
-      <div className="md:col-span-7 relative aspect-[16/10] md:aspect-auto overflow-hidden animate-[fadeIn_1.3s_ease-out]">
-        <img
-          src={heroLoop}
-          alt="AGENCIA — Software Development"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
-        />
+      <div className="md:col-span-7 relative aspect-[16/10] md:aspect-auto overflow-hidden animate-[fadeIn_1.3s_ease-out] bg-foreground text-background flex flex-col justify-between p-8 md:p-12">
+        <div className="flex items-start justify-between text-[10px] uppercase tracking-[0.25em] opacity-70">
+          <span>(A001 — 2026)</span>
+          <span>Bratislava / SK</span>
+        </div>
+        <h1 className="font-semibold leading-[0.92] tracking-[-0.03em]" style={{ fontSize: "clamp(2.5rem, 7vw, 7rem)" }}>
+          Stratégia.<br />Softvér.<br /><span className="italic font-light">Rast.</span>
+        </h1>
+        <div className="flex items-end justify-between gap-6">
+          <p className="max-w-[36ch] text-sm md:text-base opacity-75 leading-relaxed">
+            Navrhujeme a staviame digitálne produkty, ktoré prinášajú merateľné výsledky — od prvého kliku po posledné euro.
+          </p>
+          <span className="text-[10px] uppercase tracking-[0.25em] opacity-70 shrink-0">↓ Scroll</span>
+        </div>
       </div>
     </div>
 
