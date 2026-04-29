@@ -62,14 +62,9 @@ const HeroScroll = () => {
   const hintOpacity = 1 - win(0.0, 0.12);
 
   // signature path length (approx) — large enough; we'll use pathLength=1
-  // Nav header is 36px tall (h-9). Video locks under it and fills the rest.
-  const NAV_H = 36;
   return (
     <div ref={sectionRef} style={{ height: "300vh" }} className="relative">
-      <div
-        className="sticky w-full overflow-hidden"
-        style={{ top: NAV_H, height: `calc(100vh - ${NAV_H}px)` }}
-      >
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
         <video
           ref={videoRef}
           src="/hero.mp4"
