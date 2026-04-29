@@ -64,10 +64,11 @@ export const ScrambleText = ({
     if (trigger === "hover" || trigger === "both") scramble();
   };
 
+  const Comp = Tag as any;
   return (
-    <Tag className={className} onMouseEnter={handleEnter} onClick={scramble}>
+    <Comp className={className} onMouseEnter={handleEnter} onClick={scramble}>
       {text}
-    </Tag>
+    </Comp>
   );
 };
 
