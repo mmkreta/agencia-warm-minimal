@@ -8,7 +8,7 @@ import ScrollRevealText from "@/components/ScrollRevealText";
 import ThemeToggle from "@/components/ThemeToggle";
 import useScrambleOnClick from "@/hooks/useScrambleOnClick";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
-import heroLoop from "@/assets/hero-loop.mov";
+import heroLoop from "@/assets/hero-loop.jpg";
 
 const projects = [
   {
@@ -104,13 +104,11 @@ const Hero = () => (
         />
       </div>
       <div className="md:col-span-7 relative aspect-[16/10] md:aspect-auto overflow-hidden animate-[fadeIn_1.3s_ease-out]">
-        <video
+        <img
           src={heroLoop}
-          autoPlay
-          loop
-          muted
-          playsInline
+          alt="AGENCIA — Software Development"
           className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
         />
       </div>
     </div>
