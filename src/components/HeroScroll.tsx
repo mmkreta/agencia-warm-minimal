@@ -60,14 +60,6 @@ const HeroScroll = () => {
   const win = (a: number, b: number) =>
     Math.min(1, Math.max(0, (progress - a) / (b - a)));
 
-  const wordsIn = win(0.28, 0.5); // 3 words fade/slide in
-  const wordsOut = win(0.62, 0.78); // 3 words fade out
-  const wordsOpacity = wordsIn * (1 - wordsOut);
-
-  const sigStart = 0.55;
-  const sigEnd = 0.92;
-  const sigProgress = win(sigStart, sigEnd); // 0..1 stroke draw
-
   const hintOpacity = 1 - win(0.0, 0.12);
 
   // signature path length (approx) — large enough; we'll use pathLength=1
