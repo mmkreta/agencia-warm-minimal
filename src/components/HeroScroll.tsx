@@ -90,7 +90,7 @@ const HeroScroll = () => {
         >
           <span
             className="uppercase text-[10px] tracking-[0.35em] text-white/85"
-            style={{ fontFamily: "'Space Mono', monospace" }}
+            style={{ fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
           >
             Potiahnite
           </span>
