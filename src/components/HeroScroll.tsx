@@ -124,22 +124,6 @@ const HeroScroll = () => {
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        {/* scroll-driven scramble headline */}
-        <div
-          className="absolute left-0 right-0 flex justify-center px-6 pointer-events-none"
-          style={{ top: "42%", opacity: scrambleOpacity }}
-        >
-          <span
-            className="uppercase text-2xl md:text-4xl lg:text-5xl tracking-[0.28em] font-medium whitespace-nowrap"
-            style={{
-              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-              color: "#000",
-            }}
-          >
-            <ScrollScramble text="SOFTVÉR. AI. MARKETING." progress={scrambleProgress} />
-          </span>
-        </div>
-
         {/* bottom hint: potiahnite + arrow inline */}
         <div
           className="absolute bottom-4 left-0 right-0 flex flex-row items-center justify-center gap-2 pointer-events-none"
