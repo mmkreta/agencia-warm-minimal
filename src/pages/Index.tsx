@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import Process from "@/components/Process";
 import Testimonial from "@/components/Testimonial";
 import BigCta from "@/components/BigCta";
@@ -88,7 +89,13 @@ const Nav = () => (
         <li><a href="#sluzby" className="hover:text-white transition-colors">Marketing</a></li>
         <li><a href="#sluzby" className="hover:text-white transition-colors">AI</a></li>
       </ul>
-      <a href="#kontakt" className="hover:text-white transition-colors">Kontakt</a>
+      <Link
+        to="/apply"
+        className="px-4 py-2 rounded-md text-[10px] tracking-[0.22em] font-semibold text-white transition-transform hover:scale-[1.04] mix-blend-normal"
+        style={{ backgroundColor: "hsl(var(--brand-accent))" }}
+      >
+        Apply Now →
+      </Link>
     </nav>
   </header>
 );
