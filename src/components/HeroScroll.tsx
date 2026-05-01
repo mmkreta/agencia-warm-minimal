@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*<>/=+-?";
 
@@ -153,6 +154,15 @@ const HeroScroll = () => {
         </div>
 
         <style>{`@keyframes heroBounce { 0%,100% { transform: translateY(0) } 50% { transform: translateY(8px) } }`}</style>
+
+        {/* floating Apply CTA */}
+        <Link
+          to="/apply"
+          className="absolute bottom-6 right-6 md:bottom-10 md:right-10 inline-flex items-center gap-2 px-5 py-3 md:px-6 md:py-4 rounded-md text-[10px] md:text-[11px] uppercase tracking-[0.22em] font-semibold text-white shadow-lg transition-transform hover:scale-[1.04]"
+          style={{ backgroundColor: "hsl(var(--brand-accent))" }}
+        >
+          Apply Now →
+        </Link>
       </div>
     </div>
   );
