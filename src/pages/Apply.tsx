@@ -48,7 +48,8 @@ const TIMELINES = [
 
 /* ----------------------------- ui bits ----------------------------- */
 
-const stepTitles = ["Služba & cieľ", "Brand basics", "Rozpočet & timing", "Kontakt"];
+const stepTitles = ["Služba & cieľ", "Rozpočet & timing", "Kontakt"];
+const TOTAL_STEPS = 3;
 
 const inputCls =
   "w-full bg-transparent border-b border-white/15 py-4 text-lg outline-none focus:border-white transition-colors text-white placeholder:text-white/30";
@@ -114,9 +115,8 @@ const Apply = () => {
 
   const stepValid = useMemo(() => {
     if (step === 0) return form.service.length > 0 && form.goal.trim().length >= 3;
-    if (step === 1) return true; // brand basics optional
-    if (step === 2) return form.budget.length > 0 && form.timeline.length > 0;
-    if (step === 3)
+    if (step === 1) return form.budget.length > 0 && form.timeline.length > 0;
+    if (step === 2)
       return (
         form.name.trim().length >= 2 &&
         form.phone.trim().length >= 6 &&
@@ -127,7 +127,7 @@ const Apply = () => {
 
   const next = () => {
     if (!stepValid) return;
-    if (step < 3) setStep((s) => s + 1);
+    if (step < TOTAL_STEPS - 1) setStep((s) => s + 1);
     else void submit();
   };
 
@@ -200,7 +200,7 @@ const Apply = () => {
         <div className="h-[2px] bg-white/10">
           <div
             className="h-full bg-white transition-all duration-500"
-            style={{ width: `${((step + 1) / 4) * 100}%` }}
+            style={{ width: `${((step + 1) / TOTAL_STEPS) * 100}%` }}
           />
         </div>
       </header>
@@ -209,7 +209,7 @@ const Apply = () => {
       <section className="pt-32 pb-32 px-6 md:px-12">
         <div className="max-w-2xl mx-auto">
           <p className={labelCls}>
-            Krok {step + 1} / 4 — {stepTitles[step]}
+            Krok {step + 1} / {TOTAL_STEPS} — {stepTitles[step]}
           </p>
 
           {step === 0 && (
@@ -244,42 +244,6 @@ const Apply = () => {
           )}
 
           {step === 1 && (
-            <div className="space-y-10">
-              <h2 className="text-3xl md:text-5xl font-semibold tracking-tight leading-[1.05]">
-                Povedzte nám o značke.
-              </h2>
-              <div>
-                <label className={labelCls}>Názov firmy</label>
-                <input
-                  value={form.company}
-                  onChange={(e) => set("company", e.target.value)}
-                  className={inputCls}
-                  placeholder="ACME s.r.o."
-                />
-              </div>
-              <div>
-                <label className={labelCls}>Web</label>
-                <input
-                  value={form.website}
-                  onChange={(e) => set("website", e.target.value)}
-                  className={inputCls}
-                  placeholder="https://…"
-                />
-              </div>
-              <div>
-                <label className={labelCls}>Instagram / sociálne siete</label>
-                <input
-                  value={form.instagram}
-                  onChange={(e) => set("instagram", e.target.value)}
-                  className={inputCls}
-                  placeholder="@vasaznacka"
-                />
-              </div>
-              <p className="text-xs text-white/40">Tento krok je voliteľný — preskočte, ak ešte nemáte.</p>
-            </div>
-          )}
-
-          {step === 2 && (
             <div className="space-y-12">
               <div>
                 <h2 className="text-3xl md:text-5xl font-semibold tracking-tight leading-[1.05]">
@@ -314,7 +278,7 @@ const Apply = () => {
             </div>
           )}
 
-          {step === 3 && (
+          {step === 2 && (
             <div className="space-y-10">
               <h2 className="text-3xl md:text-5xl font-semibold tracking-tight leading-[1.05]">
                 Kam sa máme ozvať?
@@ -349,6 +313,25 @@ const Apply = () => {
                     maxLength={40}
                   />
                 </div>
+                <div>
+                  <label className={labelCls}>Firma <span className="text-white/30">(voliteľné)</span></label>
+                  <input
+                    value={form.company}
+                    onChange={(e) => set("company", e.target.value)}
+                    className={inputCls}
+                    maxLength={150}
+                  />
+                </div>
+                <div>
+                  <label className={labelCls}>Web <span className="text-white/30">(voliteľné)</span></label>
+                  <input
+                    value={form.website}
+                    onChange={(e) => set("website", e.target.value)}
+                    className={inputCls}
+                    maxLength={255}
+                    placeholder="https://…"
+                  />
+                </div>
               </div>
               <p className="text-xs text-white/45">
                 Odoslaním súhlasíte so spracovaním údajov za účelom nadviazania spolupráce.
@@ -374,7 +357,7 @@ const Apply = () => {
               className="inline-flex items-center gap-2 px-7 py-4 text-xs uppercase tracking-[0.2em] font-medium rounded-md transition-all disabled:opacity-40 disabled:cursor-not-allowed"
               style={{ backgroundColor: "hsl(var(--brand-accent))", color: "hsl(0 0% 96%)" }}
             >
-              {submitting ? "Odosielam…" : step === 3 ? "Odoslať prihlášku" : "Pokračovať"}
+              {submitting ? "Odosielam…" : step === TOTAL_STEPS - 1 ? "Odoslať prihlášku" : "Pokračovať"}
               {!submitting && <ArrowRight className="w-4 h-4" />}
             </button>
           </div>
