@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, ContactShadows } from "@react-three/drei";
+import { ContactShadows } from "@react-three/drei";
 import * as THREE from "three";
 
 /**
@@ -233,7 +233,6 @@ const CloserLook = () => {
                   blur={2.4}
                   far={2}
                 />
-                <Environment preset="city" />
               </Suspense>
             </Canvas>
         </div>
